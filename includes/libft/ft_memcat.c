@@ -6,18 +6,22 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 17:14:11 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/12 19:02:50 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/12 16:03:37 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcat_c(char *s1, char s2)
+void	*ft_memcat(void *s1, void *s2)
 {
+	unsigned char	*str1;
+	unsigned char	*str2;
 	char			*ret;
 	int				i;
 
-	ret = ft_memalloc(ft_strlen(s1) + 2);
+	str1 = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	ret = ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	ft_strcpy((char *)ret, s1);
 	i = 0;
 	while (((char *)s2)[i])

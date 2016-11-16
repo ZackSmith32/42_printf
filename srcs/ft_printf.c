@@ -6,47 +6,77 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/12 19:57:40 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/15 22:44:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+// #include "../includes/func_list.h"
 
-char	*parse(char **sentinel, va_list args)
+/*
+** need to create data structure param list
+** need to create function for new param list (does mem need to be allocated)
+** create fucntion that parses sentinel, and populates params
+** advance sentinel
+** TEST!!!!! 
+*/
+
+
+
+int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 {
-	
-	conv_calc(sentinel, args)
-	(*sentinel)++;
-	return (" goodbye");
+	printf("pop_obj:in: sentinel: %s\n", *sentinel);
+
+	if (**sentinel == '%')
+	{
+		pop_flags(obj, sentinel);
+		pop_width(obj, sentinel);
+		pop_precision(obj, sentinel);
+		pop_length(obj, sentinel);
+		pop_con(obj, sentinel);
+	} else {
+		pop_str(obj, sentinel);
+	}
+	// printf("pop_obj: str: %s\n", obj->str);
+	// printf("pop_obj: plus: %d\n", obj->plus);
+	// (*sentinel)++;
+	// increment_sent(obj);
+	return (1);
 }
 
-char	*mission_control(char **sentinel, va_list args, char *print_str)
+char	*mission_control(char **sentinel, va_list args)
 {
-	printf("in: mission control\n");
-	char	*temp;
+	printf("mc:in: mission control\n");
+	conv_obj	*item;
+	conv_obj	*temp;
 
-	temp = ft_memalloc(2);
-	temp[0] = sentinel[0][0];
-	if (**sentinel == '\0')
-		return (print_str);
-	else if (**sentinel != '%')
+	item = new_conv_obj();
+	temp = item;
+	while (sentinel[0][0] != '\0')
 	{
-		print_str = ft_strjoin(print_str, temp);
-		(*sentinel)++;
+		printf(">>>>>>>>>>>>>start\n");
+		printf("mc: sentinel: %s\n", *sentinel);
+		if (temp_not_null(temp))
+		{
+			printf("temp not null\n");
+			temp  = new_conv_obj();
+		}
+		pop_obj(temp, sentinel, args);
+		ft_lstadd_end(item, temp);
+		test_print(temp);
+		printf(">>>>>>>>>>>>>end\n\n");
 	}
-	else
-		print_str = ft_strjoin(print_str, parse(sentinel, args));
-	return (mission_control(sentinel, args, print_str));
+	// printf("mc:");
+	// ft_putlist(item);
+	return (0);
 }
 
 int		ft_printf(char *sentinel, ...)
 {
 	va_list args;
-	char	*print_str;
 
-	print_str = ft_memalloc(1);
 	va_start(args, sentinel);
-	ft_putstr(mission_control(&sentinel, args, print_str));
+	mission_control(&sentinel, args);
 	va_end(args);
 
 	return (0);
@@ -54,18 +84,17 @@ int		ft_printf(char *sentinel, ...)
 
 int		main(void)
 {
-	ft_printf("hello%");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	// ft_printf("hello");
+	// ft_printf("abcd %+++++10s", "hello");
+	// ft_printf("foo %10.5s ++--  ");
+	ft_printf("%-hhs% 14s%#19.31s%++-#s");
+	// ft_printf("%hs");
+	// ft_printf("%lls");
+	// ft_printf("%ls");
+	// ft_printf("%js");
+	// ft_printf("%zs");
+
+	// ft_printf("%s", "hello");
 	return (0);
 }
-
-
-
-/*
-	while (1)
-	{
-		if ((i = va_arg(args, int)))
-			printf("%d\n", i);
-		else
-			break ;
-	}
-*/

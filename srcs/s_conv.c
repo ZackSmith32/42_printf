@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func_list.h                                        :+:      :+:    :+:   */
+/*   s_conv.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 10:31:41 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/15 18:41:30 by zsmith           ###   ########.fr       */
+/*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
+/*   Updated: 2016/11/15 22:13:29 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNC_LIST_H
-# define FUNC_LIST_H
+#include "../includes/ft_printf.h"
+// #include "../includes/func_list.h"
 
+void	s_func(conv_obj *obj, va_list args)
+{
 
-void	s_func(conv_obj obj, va_list args);
-// g_func_arr[0] = {"s", &s_func};
-
-f_list	g_func_arr[15] = {
-	{"s", &s_func}
+	return ;
 }
-
-#endif
