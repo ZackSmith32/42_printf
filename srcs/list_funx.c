@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/15 21:54:56 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/16 12:44:28 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		ft_lstadd_end(conv_obj *start, conv_obj *new)
 	holder = start;
 	while (holder->next != NULL)
 	{
-		printf("lstadd: holder->str = %s\n", holder->str);
+		// printf("lstadd: holder->str = %s\n", holder->str);
 		holder = holder->next;
 	}
 	holder->next = new;

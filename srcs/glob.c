@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/15 22:15:42 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:21:48 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ char *g_flag_norm = "-+# 0";
 char *g_flag_length = "h,hh,l,ll,j,z,";
 
 f_list g_func_arr[] = {
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func},
-	{'s', &s_func}
+	{'s', &S_func},
+	{'p', &p_func},
+	{'d', &d_func},
+	{'D', &D_func},
+	{'i', &i_func},
+	{'o', &o_func},
+	{'O', &O_func},
+	{'u', &u_func},
+	{'U', &U_func},
+	{'x', &x_func},
+	{'X', &X_func},
+	{'c', &c_func},
+	{'C', &C_func}
 };
+
+
 

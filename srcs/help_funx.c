@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/15 22:22:11 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/18 10:46:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,74 @@ void	test_print(conv_obj *obj)
 	printf("w_star : %d\n", obj->w_star);
 	printf("prec   : %d\n", obj->prec);
 	printf("p_star : %d\n", obj->p_star);
+	printf("con_typ: %c\n", obj->con_typ);
 	printf("chr_cnt: %d\n", obj->chr_cnt);
+	// printf("data   : %s\n", obj->data);
 	printf("str    : %s\n", obj->str);
 	if (obj->f)
 		printf("func   : yes\n");
+	else
+		printf("func   : no\n");
 }
+
+char			*ft_itoa2(void *nbr)
+{
+	char		*ans;
+	int			i;
+	long long	n;
+
+	n = (long long)nbr;
+	i = ft_numlen(n);
+	if (n < 0)
+		n = n * -1;
+	ans = (char *)malloc(sizeof(char) * (i + 1));
+	if (ans == 0)
+		return (NULL);
+	ans[i] = '\0';
+	if (n == 0)
+		ans[--i] = 48;
+	while (n != 0)
+	{
+		ans[--i] = n % 10 + 48;
+		n = n / 10;
+	}
+	if (i != 0)
+		ans[0] = '-';
+	printf("%s\n\n", ans);
+	return (ans);
+}
+
+
+int		ft_numlen2(long long num)
+{
+	int		i;
+
+	i = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
+	{
+		num = num * -1;
+		i++;
+	}
+	while (num > 0)
+	{
+		num = num / 10;
+		i++;
+	}
+	return (i);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

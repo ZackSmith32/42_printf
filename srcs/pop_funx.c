@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/15 22:44:56 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/17 08:45:29 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	pop_str(conv_obj *obj, char **str)
 	int		j;
 	char	*p_str;
 
-	if (obj->chr_cnt == 0)
-		i = 1;
-	else
-		i = obj->chr_cnt;
+	i = 0;
+	while (str[0][i] != '%')
+		i++;
 	p_str = (char *)malloc(i + 1);
 	j = 0;
 	while (j < i)
@@ -118,14 +117,14 @@ void	pop_length(conv_obj *obj, char **sentinel)
 			obj->hh = 1;
 			(*sentinel)++;
 		}
-		if (**sentinel == 'h')
+		else if (**sentinel == 'h')
 			obj->h = 1;
 		if (**sentinel == 'l' && (*sentinel)[1] == 'l')
 		{
 			obj->ll = 1;
 			(*sentinel)++;
 		}
-		if (**sentinel == 'l')
+		else if (**sentinel == 'l')
 			obj->l = 1;
 		if (**sentinel == 'j')
 			obj->j = 1;
