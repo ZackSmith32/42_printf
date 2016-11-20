@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/18 10:46:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/20 14:32:22 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,19 @@ typedef struct	a_list
 	int				hash;
 	int				space;
 	int				zero;
-	int				hh;
-	int				h;
-	int				l;
-	int				ll;
-	int				j;
-	int				z;
+	char			len_f;
 	int				width;
 	int				w_star;
 	int				prec;
 	int				p_star;
+	signed char		l;
+	short			m;
+	int				n;
+	long			o;
+	long long		p;
 	char			con_typ;
 	void			(*f)(struct a_list *obj);
 	int				chr_cnt;
-	void			*data;
 	int				data_p_star;
 	int				data_w_star;
 	char			*str;
@@ -77,7 +76,9 @@ void		pop_length(conv_obj *obj, char **sentinel);
 ** 			pop_funx2
 */
 void		pop_con(conv_obj *obj, char **sentinel);
-void		pop_data(conv_obj *obj, va_list args);
+void		pop_d_data(conv_obj *obj, va_list args);
+void		pop_len_args(conv_obj *obj, va_list args);
+
 
 
 /*
@@ -86,11 +87,8 @@ void		pop_data(conv_obj *obj, va_list args);
 int			temp_not_null(conv_obj *temp);
 int			ft_strcmp_c(char *str, char c);
 void		test_print(conv_obj *obj);
-char		*ft_itoa2(void *nbr);
-int			ft_numlen2(long long num);
-
-
-
+char			*ft_itoa2(long long nbr);
+int			ft_numlen2(long num);
 
 /*
 ** 			con_funx
@@ -127,8 +125,11 @@ void		j_type(conv_obj *obj, va_list args);
 void		z_type(conv_obj *obj, va_list args);
 void		none_type(conv_obj *obj, va_list args);
 
+/*
+**			flag_funx
+*/
 
-
+void		plus_func(conv_obj *obj);
 
 
 

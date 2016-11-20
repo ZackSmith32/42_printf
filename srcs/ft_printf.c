@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/18 10:59:02 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/19 18:29:14 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*mission_control(char **sentinel, va_list args)
 		// test_print(temp);
 		// printf(">>>>>>>>>>>>>end\n\n");
 	}
-	test_print(item);
+	// test_print(item);
 	con_hq(item, args);
 	printf("item->str: %s\n", item->str);
 
@@ -96,7 +96,11 @@ int		ft_printf(char *sentinel, ...)
 
 int		main(void)
 {
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	long long	z;
+	int			y;
+
+	z = -500;
+	y = -500;
 	// ft_printf("hello");
 	// ft_printf("abcd %+++++10s", "hello");
 	// ft_printf("foo %10.5s ++--  ");
@@ -106,7 +110,9 @@ int		main(void)
 	// ft_printf("%ls");
 	// ft_printf("%js");
 	// ft_printf("%zs");
-	ft_printf("%.1d", 593);
+	ft_printf("%d", z);
+	ft_printf("%d", y);
 	// ft_printf("%s", "hello");
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	return (0);
 }

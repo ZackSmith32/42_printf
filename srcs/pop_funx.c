@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/17 08:45:29 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/20 14:28:39 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,27 +114,27 @@ void	pop_length(conv_obj *obj, char **sentinel)
 	{
 		if (**sentinel == 'h' && (*sentinel)[1] == 'h')
 		{
-			obj->hh = 1;
+			obj->len_f = 'i';
 			(*sentinel)++;
 		}
 		else if (**sentinel == 'h')
-			obj->h = 1;
+			obj->len_f = 'h';
 		if (**sentinel == 'l' && (*sentinel)[1] == 'l')
 		{
-			obj->ll = 1;
+			obj->len_f = 'k';
 			(*sentinel)++;
 		}
 		else if (**sentinel == 'l')
-			obj->l = 1;
+			obj->len_f = 'l';
 		if (**sentinel == 'j')
-			obj->j = 1;
+			obj->len_f = 'j';
 		if (**sentinel == 'z')
-			obj->z = 1;
+			obj->len_f = 'z';
 		(*sentinel)++;
 	}
 	obj->str = "*";
+	pop_len_args();
 }
-
 
 
 

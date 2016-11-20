@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/18 10:46:26 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/19 21:30:03 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,35 +77,40 @@ void	test_print(conv_obj *obj)
 		printf("func   : no\n");
 }
 
-char			*ft_itoa2(void *nbr)
+char			*ft_itoa2(long long nbr)
 {
 	char		*ans;
 	int			i;
-	long long	n;
+	// long long	n;
 
-	n = (long long)nbr;
-	i = ft_numlen(n);
-	if (n < 0)
-		n = n * -1;
+	// n = (long)nbr;
+	// printf("number: %lld\n", nbr);
+	i = ft_numlen(nbr);
+	// printf("numlen: %d\n", i);
+	if (nbr < 0)
+		nbr = nbr * -1;
 	ans = (char *)malloc(sizeof(char) * (i + 1));
 	if (ans == 0)
 		return (NULL);
 	ans[i] = '\0';
-	if (n == 0)
+	if (nbr == 0)
 		ans[--i] = 48;
-	while (n != 0)
+	while (nbr != 0)
 	{
-		ans[--i] = n % 10 + 48;
-		n = n / 10;
+		// printf("ft_itoa n = %ld\n", nbr);
+		// printf("ft_itoa n = %d\n", nbr);
+		// printf("ft_itoa %c\n", nbr % 10 + 48);
+		ans[--i] = nbr % 10 + 48;
+		nbr = nbr / 10;
 	}
 	if (i != 0)
 		ans[0] = '-';
-	printf("%s\n\n", ans);
+	printf("ft_itoa2 return: %s\n", ans);
 	return (ans);
 }
 
 
-int		ft_numlen2(long long num)
+int		ft_numlen2(long num)
 {
 	int		i;
 
