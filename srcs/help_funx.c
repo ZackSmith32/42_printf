@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/19 21:30:03 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/26 22:45:35 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ int		temp_not_null(conv_obj *temp)
 			temp->hash == 0 &&
 			temp->space == 0 &&
 			temp->zero == 0 &&
-			temp->hh == 0 &&
-			temp->h == 0 &&
-			temp->l == 0 &&
-			temp->ll == 0 &&
-			temp->j == 0 &&
-			temp->z == 0 &&
+			temp->len_f == 0 &&
+			temp->con_typ == 0 &&
 			temp->width == 0 &&
 			temp->w_star == 0 &&
-			temp->prec == 0 &&
+			temp->prec == 1 &&
 			temp->p_star == 0 &&
 			temp->str == 0
 		)
@@ -36,99 +32,133 @@ int		temp_not_null(conv_obj *temp)
 	return (1);
 }
 
-int		ft_strcmp_c(char *str, char c)
+int		ft_strc(char *str, char c)
 {
+	if (DEBUG) printf("ft_strc: in: str = %s c = %c\n", str, c);
 	int		i;
-
+	if (str == 0)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == c)
-			return (i);
+			return (1);
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
-void	test_print(conv_obj *obj)
+char		*ft_itoa3(long long nbr)
 {
-	printf("minus  : %d\n", obj->minus);
-	printf("plus   : %d\n", obj->plus);
-	printf("hash   : %d\n", obj->hash);
-	printf("space  : %d\n", obj->space);
-	printf("zero   : %d\n", obj->zero);
-	printf("hh     : %d\n", obj->hh);
-	printf("h      : %d\n", obj->h);
-	printf("l      : %d\n", obj->l);
-	printf("ll     : %d\n", obj->ll);
-	printf("j      : %d\n", obj->j);
-	printf("z      : %d\n", obj->z);
-	printf("width  : %d\n", obj->width);
-	printf("w_star : %d\n", obj->w_star);
-	printf("prec   : %d\n", obj->prec);
-	printf("p_star : %d\n", obj->p_star);
-	printf("con_typ: %c\n", obj->con_typ);
-	printf("chr_cnt: %d\n", obj->chr_cnt);
-	// printf("data   : %s\n", obj->data);
-	printf("str    : %s\n", obj->str);
-	if (obj->f)
-		printf("func   : yes\n");
-	else
-		printf("func   : no\n");
-}
+	if (DEBUG_D) printf("ft_itoa3: in\n");
+	char	*ans;
+	int		i;
+	long long	n;
 
-char			*ft_itoa2(long long nbr)
-{
-	char		*ans;
-	int			i;
-	// long long	n;
-
-	// n = (long)nbr;
-	// printf("number: %lld\n", nbr);
-	i = ft_numlen(nbr);
-	// printf("numlen: %d\n", i);
-	if (nbr < 0)
-		nbr = nbr * -1;
+	n = nbr;
+	i = ft_numlen(n);
+	if (n < 0)
+		n = n * -1;
 	ans = (char *)malloc(sizeof(char) * (i + 1));
 	if (ans == 0)
 		return (NULL);
 	ans[i] = '\0';
-	if (nbr == 0)
+	if (n == 0)
 		ans[--i] = 48;
-	while (nbr != 0)
+	while (n != 0)
 	{
-		// printf("ft_itoa n = %ld\n", nbr);
-		// printf("ft_itoa n = %d\n", nbr);
-		// printf("ft_itoa %c\n", nbr % 10 + 48);
-		ans[--i] = nbr % 10 + 48;
-		nbr = nbr / 10;
+		ans[--i] = n % 10 + 48;
+		n = n / 10;
 	}
 	if (i != 0)
 		ans[0] = '-';
-	printf("ft_itoa2 return: %s\n", ans);
 	return (ans);
 }
 
+char		*ft_itoa_base(unsigned long long n, int base)
+{
+	if (DEBUG_o) printf("ft_itoa_base: in: n = %lld\n", n);
+	int		i;
+	char 	lst[17];
+	char	*str;
 
-int		ft_numlen2(long num)
+	ft_strcpy(lst, "0123456789abcdef");
+	i = ft_numlen_base(n, base);
+	str = ft_memalloc(sizeof(char) * i + 1);
+	if (str == NULL)
+		return (NULL);
+	if (n == 0)
+	{
+		str[0] = 0;
+		return (str);
+	}
+	while (n != 0)
+	{
+		if (DEBUG_o) printf("ft_itoa_base: i: %d\n", i);	
+		str[--i] = lst[n % base];
+		n = n / base;
+	}
+	if (DEBUG_o) printf("ft_itoa_base: out: %s\n", str);	
+	return (str);
+}
+
+int			ft_numlen_base(long long n, int base)
 {
 	int		i;
 
 	i = 0;
-	if (num == 0)
-		return (1);
-	if (num < 0)
+	while (n > 0)
 	{
-		num = num * -1;
-		i++;
-	}
-	while (num > 0)
-	{
-		num = num / 10;
+		n = n / base;
 		i++;
 	}
 	return (i);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

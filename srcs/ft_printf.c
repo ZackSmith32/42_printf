@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/19 18:29:14 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/27 11:57:16 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@
 */
 
 
-
+/*
+** all the pop funcitons return sentinel pointing at the next char to analyze
+*/
 int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 {
-	printf("pop_obj:in: sentinel: %s\n", *sentinel);
+	if (DEBUG) printf("pop_obj: in : sentinel = %s\n", *sentinel);
 
 	if (**sentinel == '%')
 	{
@@ -34,7 +36,6 @@ int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 		pop_precision(obj, sentinel);
 		pop_length(obj, sentinel);
 		pop_con(obj, sentinel);
-		pop_data(obj, args);
 	} else {
 		pop_str(obj, sentinel);
 	}
@@ -42,17 +43,26 @@ int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 	// printf("pop_obj: plus: %d\n", obj->plus);
 	// (*sentinel)++;
 	// increment_sent(obj);
+	// printf("pop_obj: con_typ = %c\n", obj->con_typ);
+	// printf("pop_obj: n: %d\n", obj->n);
+	if (DEBUG) printf("pop_obj: out: sentinel = %s\n", *sentinel);
 	return (1);
 }
 
 void	con_hq(conv_obj *obj, va_list args)
 {
-	(obj->f)(obj);
+	// obj->f = &d_func;
+	if (DEBUG) printf("con_hq: in\n");
+	if (obj->f)
+	{
+		if (DEBUG) printf("con_hq: obj->f exists\n");
+		(obj->f)(obj, args);
+	}
 }
 
 char	*mission_control(char **sentinel, va_list args)
 {
-	// printf("mc:in: mission control\n");
+	if (DEBUG) printf("mc: in:\n");
 	conv_obj	*item;
 	conv_obj	*temp;
 
@@ -60,21 +70,21 @@ char	*mission_control(char **sentinel, va_list args)
 	temp = item;
 	while (sentinel[0][0] != '\0')
 	{
-		// printf(">>>>>>>>>>>>>start\n");
-		// printf("mc: sentinel: %s\n", *sentinel);
+		if (DEBUG) printf(">>>>>>>>>>>>>start\n");
+		if (1) printf("mc: sentinel: %s\n", *sentinel);
 		if (temp_not_null(temp))
 		{
 			// printf("temp not null\n");
 			temp  = new_conv_obj();
 		}
 		pop_obj(temp, sentinel, args);
+		con_hq(temp, args);
+		test_print(temp);
 		ft_lstadd_end(item, temp);
-		// test_print(temp);
-		// printf(">>>>>>>>>>>>>end\n\n");
+		if (DEBUG) printf(">>>>>>>>>>>>>end\n\n");
 	}
 	// test_print(item);
-	con_hq(item, args);
-	printf("item->str: %s\n", item->str);
+	// printf("mc: temp->str: %s\n", temp->str);
 
 	return (0);
 }
@@ -96,11 +106,50 @@ int		ft_printf(char *sentinel, ...)
 
 int		main(void)
 {
-	long long	z;
-	int			y;
+	/*
+	signed char	q = -100;
+	short		r = -200;
+	int			s = -300;
+	long		t = -400;
+	long long	u = -3147483648;
+	intmax_t	v = -600;
+	size_t		w = 700;
 
-	z = -500;
-	y = -500;
+	unsigned long long u; 
+	u = 10223372036854775807;
+	intmax_t	v = 10223372036854775807;
+	size_t		w = 10223372036854775807;
+	*/
+	/* length modifier testing *//*
+	ft_printf("%8hhd", q);
+	ft_printf("%8hd", r);
+	ft_printf("%8d", s);
+	ft_printf("%8ld", t);
+	ft_printf("%8lld", u);
+	ft_printf("%8jd", v);
+	ft_printf("% +8zd", w);
+	*/
+	/* precision and width testing */
+	ft_printf("%#llx", (unsigned long long)27);
+
+	printf("** printf : ");
+	printf("%#llX\n", (unsigned long long)27);
+
+
+	// ft_printf("signed char:%hhd", q);
+	// ft_printf("short      :%hd", r);
+
+	// ft_printf("long       :%ld", t);
+	// ft_printf("long long  :%lld", u);
+	// ft_printf("intmax_t   :%jd", v);
+	// ft_printf("size_t     :%zd", w);
+
+
+
+
+
+
+
 	// ft_printf("hello");
 	// ft_printf("abcd %+++++10s", "hello");
 	// ft_printf("foo %10.5s ++--  ");
@@ -110,8 +159,7 @@ int		main(void)
 	// ft_printf("%ls");
 	// ft_printf("%js");
 	// ft_printf("%zs");
-	ft_printf("%d", z);
-	ft_printf("%d", y);
+	// ft_printf("%lld", z);
 	// ft_printf("%s", "hello");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	return (0);

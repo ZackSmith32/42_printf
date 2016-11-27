@@ -6,14 +6,14 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/17 08:21:48 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/26 17:37:51 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
 char *g_flag_norm = "-+# 0";
-char *g_flag_length = "h,hh,l,ll,j,z,";
+char *g_flag_length = "hljz";
 
 f_list g_func_arr[] = {
 	{'s', &S_func},
@@ -31,5 +31,7 @@ f_list g_func_arr[] = {
 	{'C', &C_func}
 };
 
-
-
+int		DEBUG = 0;
+int		DEBUG_D = 1;
+int		DEBUG_POP = 0;
+int		DEBUG_o = 1;
