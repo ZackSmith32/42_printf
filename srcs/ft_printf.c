@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 11:57:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/27 13:06:16 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ int		main(void)
 	ft_printf("% +8zd", w);
 	*/
 	/* precision and width testing */
-	ft_printf("%#llx", (unsigned long long)27);
+	ft_printf("% .5d", -27);
 
 	printf("** printf : ");
-	printf("%#llX\n", (unsigned long long)27);
+	printf("%#.5x\n", 27);
 
 
 	// ft_printf("signed char:%hhd", q);

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/26 23:22:44 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/27 13:20:16 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,9 @@ void		x_hash(conv_obj *obj);
 **			flag_funx
 */
 void		plus_func(conv_obj *obj);
-void		precision(conv_obj *obj);
 void		space_flag(conv_obj *obj);
+void		precision(conv_obj *obj);
+;
 
 
 

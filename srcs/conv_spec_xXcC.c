@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 11:33:09 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/27 13:31:28 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	X_func(conv_obj *obj, va_list args)
 	i = 0;
 	while ((obj->str)[i])
 	{
-		printf("str[%d] = %c\n", i, (obj->str)[i]);
 		obj->str[i] = ft_toupper((obj->str)[i]);
 		i++;
 	}

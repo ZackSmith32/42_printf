@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 11:57:06 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/11/27 13:26:54 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	o_func(conv_obj *obj, va_list args)
 	if (DEBUG_o) printf("o_func: in\n");
 	int		n;
 
+	star_args(obj);
 	if (obj->con_typ == 'o')
 		n = 8;
 	else
@@ -39,6 +40,7 @@ void	o_func(conv_obj *obj, va_list args)
 	d_precision(obj);
 	if (ft_strlen(obj->str) == 0)
 		return ;
+	d_precision(obj);
 	o_hash(obj);
 	x_hash(obj);
 	d_width(obj);
@@ -78,16 +80,19 @@ void	x_hash(conv_obj *obj)
 
 void	O_func(conv_obj *obj, va_list args)
 {
+	o_func(obj, args);
 	return ;
 }
 
 void	u_func(conv_obj *obj, va_list args)
 {
+	d_func(obj, args);
 	return ;
 }
 
 void	U_func(conv_obj *obj, va_list args)
 {
+	d_func(obj, args);
 	return ;
 }
 
