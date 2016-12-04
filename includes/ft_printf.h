@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 13:20:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 12:54:58 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 #include <unistd.h>
 #include <stdarg.h> // va_list
 #include <stdint.h> // intmax_t
+#include <wchar.h>	// wint_t
 #include "libft/libft.h"
 
 extern int DEBUG;
 extern int DEBUG_D;
 extern int DEBUG_POP;
 extern int DEBUG_o;
+extern int DEBUG_s;
+extern int DEBUG_c;
 
 typedef struct	a_list
 {
@@ -90,12 +93,11 @@ int			ft_numlen_base(long long n, int base);
 /*
 **			help_funx2
 */
+int			utf_len(wchar_t *wide);
 
 /*
 ** 			con_funx
 */
-void		s_func(conv_obj *obj, va_list args);
-void		S_func(conv_obj *obj, va_list args);
 void		p_func(conv_obj *obj, va_list args);
 void		i_func(conv_obj *obj, va_list args);
 void		O_func(conv_obj *obj, va_list args);
@@ -103,8 +105,6 @@ void		u_func(conv_obj *obj, va_list args);
 void		U_func(conv_obj *obj, va_list args);
 void		x_func(conv_obj *obj, va_list args);
 void		X_func(conv_obj *obj, va_list args);
-void		c_func(conv_obj *obj, va_list args);
-void		C_func(conv_obj *obj, va_list args);
 
 /*
 **			d_funx
@@ -121,14 +121,23 @@ void		o_func(conv_obj *obj, va_list args);
 void		o_hash(conv_obj *obj);
 void		x_hash(conv_obj *obj);
 
+/*
+**			s_funx
+*/
+void		s_func(conv_obj *obj, va_list args);
+void		S_func(conv_obj *obj, va_list args);
+void		c_func(conv_obj *obj, va_list args);
+void		C_func(conv_obj *obj, va_list args);
+
+
 
 /*
 **			flag_funx
 */
 void		plus_func(conv_obj *obj);
-void		space_flag(conv_obj *obj);
-void		precision(conv_obj *obj);
-;
+void		space_flag(conv_obj *obj);	
+void		star_args(conv_obj *obj, va_list args);
+
 
 
 

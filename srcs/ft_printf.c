@@ -6,11 +6,12 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 13:06:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 12:56:22 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <locale.h>
 // #include "../includes/func_list.h"
 
 /*
@@ -51,7 +52,6 @@ int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 
 void	con_hq(conv_obj *obj, va_list args)
 {
-	// obj->f = &d_func;
 	if (DEBUG) printf("con_hq: in\n");
 	if (obj->f)
 	{
@@ -73,10 +73,7 @@ char	*mission_control(char **sentinel, va_list args)
 		if (DEBUG) printf(">>>>>>>>>>>>>start\n");
 		if (1) printf("mc: sentinel: %s\n", *sentinel);
 		if (temp_not_null(temp))
-		{
-			// printf("temp not null\n");
 			temp  = new_conv_obj();
-		}
 		pop_obj(temp, sentinel, args);
 		con_hq(temp, args);
 		test_print(temp);
@@ -95,17 +92,64 @@ int		ft_printf(char *sentinel, ...)
 	int		x;
 
 	va_start(args, sentinel);
-	// x = (int)va_arg(args, void*);
-	// printf("hello world%d\n", 5);
-	// printf("ft_printf: va_args: %d\n", x);
 	mission_control(&sentinel, args);
 	va_end(args);
-
 	return (0);
 }
 
+
 int		main(void)
 {
+	wint_t		c;
+
+	c = L'b';
+	ft_printf("%lc", c);
+	printf("%lc\n", c);
+
+	printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/* wide char strings */
+	/*
+	setlocale(LC_ALL, "");
+
+	 wint_t		y;
+	wchar_t			*z;
+
+	z = L"abcd";
+
+	ft_printf("%ls", z);
+	printf("%ls", z);
+
+	y = 0x0011;
+	ft_printf("%s", "R€¢Ż😁");	
+	ft_printf("%s", "¢");
+	ft_printf("%s", "Ż");
+	ft_printf("%s", "😁");
+	printf("%s\n", "😁");
+
+	¢ : 2 bytes
+	€ : 3 bytes
+	😁 : 4 bytes
+	Ż
+	*/
+
+	/* precision and width testing */
+
 	/*
 	signed char	q = -100;
 	short		r = -200;
@@ -129,38 +173,4 @@ int		main(void)
 	ft_printf("%8jd", v);
 	ft_printf("% +8zd", w);
 	*/
-	/* precision and width testing */
-	ft_printf("% .5d", -27);
 
-	printf("** printf : ");
-	printf("%#.5x\n", 27);
-
-
-	// ft_printf("signed char:%hhd", q);
-	// ft_printf("short      :%hd", r);
-
-	// ft_printf("long       :%ld", t);
-	// ft_printf("long long  :%lld", u);
-	// ft_printf("intmax_t   :%jd", v);
-	// ft_printf("size_t     :%zd", w);
-
-
-
-
-
-
-
-	// ft_printf("hello");
-	// ft_printf("abcd %+++++10s", "hello");
-	// ft_printf("foo %10.5s ++--  ");
-	// ft_printf("hello world%-hhs% 14s%#19.31s%++-#s");
-	// ft_printf("%hs");
-	// ft_printf("%lls");
-	// ft_printf("%ls");
-	// ft_printf("%js");
-	// ft_printf("%zs");
-	// ft_printf("%lld", z);
-	// ft_printf("%s", "hello");
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-	return (0);
-}

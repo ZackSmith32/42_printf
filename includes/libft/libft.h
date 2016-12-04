@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 12:02:11 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/12 16:01:58 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/01 14:23:21 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ int					ft_numlen(long num);
 char				*ft_strdup_n(const char *src, int n);
 char				*ft_strccat(char *s1, const char *s2, char c);
 void				*ft_memcat(void *s1, void *s2);
+void				ft_putbits(int n, int bytes);
+
 
 
 #endif

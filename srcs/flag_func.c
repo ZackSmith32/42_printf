@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 13:20:14 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/01 15:02:38 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	space_flag(conv_obj *obj)
 	obj->str = new_str;
 }
 
-void	star_args(conv_obj *obj)
+void	star_args(conv_obj *obj, va_list args)
 {
 	if (obj->p_star)
 		obj->prec = va_arg(args, int);

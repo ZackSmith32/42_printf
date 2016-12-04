@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/27 13:26:54 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/01 15:03:20 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	o_func(conv_obj *obj, va_list args)
 	if (DEBUG_o) printf("o_func: in\n");
 	int		n;
 
-	star_args(obj);
+	star_args(obj, args);
 	if (obj->con_typ == 'o')
 		n = 8;
 	else

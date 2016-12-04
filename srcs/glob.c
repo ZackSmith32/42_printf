@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/26 17:37:51 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 12:57:19 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char *g_flag_norm = "-+# 0";
 char *g_flag_length = "hljz";
 
 f_list g_func_arr[] = {
-	{'s', &S_func},
+	{'s', &s_func},
+	{'S', &S_func},
 	{'p', &p_func},
 	{'d', &d_func},
 	{'D', &D_func},
@@ -32,6 +33,13 @@ f_list g_func_arr[] = {
 };
 
 int		DEBUG = 0;
-int		DEBUG_D = 1;
+int		DEBUG_D = 0;
 int		DEBUG_POP = 0;
-int		DEBUG_o = 1;
+int		DEBUG_o = 0;
+int		DEBUG_s = 1;
+int		DEBUG_c = 1;
+
+void		p_func(conv_obj *obj, va_list args)
+{
+	return ;
+}
