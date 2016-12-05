@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 13:01:35 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:11:44 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,33 +62,23 @@ char	*s_wide_4(int wc)
 }
 
 
-char	*s_wide(wchar_t *wide)
+char	*s_wide(wchar_t wide)
 {
 	if (DEBUG_s) printf("s_wide: in\n");
 	char		*ret;
-	char		*temp;
 	int			i;
 
-	ret = (char *)ft_memalloc(utf_len(wide) + 1);
-	i = 0;
-	while (wide[i] != 0)
-	{
-		if (wide[i] <= 0x78)
-			temp = s_wide_1(wide[i]);
-		else if (wide[i] <= 0x1fff)
-			temp = s_wide_2(wide[i]);
-		else if (wide[i] <= 0xffff)
-			temp = s_wide_3(wide[i]);
-		else
-			temp = s_wide_4(wide[i]);
-		ft_strcat(ret, temp);
-		ft_bzero(temp, ft_strlen(temp));
-		free(temp);
-		i++;
-	}
+	if (wide <= 0x78)
+		ret = s_wide_1(wide);
+	else if (wide <= 0x1fff)
+		ret = s_wide_2(wide);
+	else if (wide <= 0xffff)
+		ret = s_wide_3(wide);
+	else
+		ret = s_wide_4(wide);
 	ft_strcat(ret, "\0");
-	return (ret);
 	if (DEBUG_s) printf("\ns_wide: ret = %s\n", ret);
+	return (ret);
 }
 
 
@@ -97,13 +87,15 @@ void	s_func(conv_obj *obj, va_list args)
 	if (DEBUG_s) printf("s_func: in\n");
 	char	*s;
 	int		i;
+	wchar_t	*w;
 
 	if (!ft_strcmp(obj->len_f, "l"))
 	{
-		while ()
-		{
-			s = s_wide(va_arg(args, wchar_t *));
-		}
+		w = va_arg(args, wchar_t *);
+		s = (char *)ft_memalloc(utf_len(w));
+		i = -1;
+		while (w[++i] != 0)
+			ft_strcat(s, s_wide(w[i]));
 	}
 	else 
 		s = va_arg(args, char *);
@@ -115,7 +107,7 @@ void	s_func(conv_obj *obj, va_list args)
 	if (!ft_strcmp(obj->len_f, "l"))
 		free(s);
 	d_width(obj);
-	printf("s_func: obj->str = %s\n", obj->str);
+	if (DEBUG_s) printf("s_func: obj->str = %s\n", obj->str);
 }
 
 void	S_func(conv_obj *obj, va_list args)
@@ -127,31 +119,66 @@ void	S_func(conv_obj *obj, va_list args)
 void	c_func(conv_obj *obj, va_list args)
 {
 	if (DEBUG_c) printf("c_func: in\n");
-	int		c;
-	char	d;
-	int		*str;
+	char	*d;
 
 	if (!ft_strcmp(obj->len_f, "l"))
+		d = s_wide(va_arg(args, wint_t));
+	else
 	{
-		c = va_arg(args, wint_t);
-		// str = ft_memalloc(sizeof(int));
-		// str = &c;
-		printf("%u\n", c);
-		printf("result: ");
-		write(1, &c, 2);
-		printf("\n");
+		d = (char *)ft_memalloc(2);
+		d[0] = va_arg(args, int);
+		d[1] = '\0';
 	}
-	// else
-	// {
-	// 	d = va_arg(args, char);
-	// 	str = ft_memalloc(1);
-	// }
+	obj->str = d;
 }
 
 void	C_func(conv_obj *obj, va_list args)
 {
+	c_func(obj, args);
 	return ;
 }
 
 
 // \xF0\x9F\x93\xBA 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

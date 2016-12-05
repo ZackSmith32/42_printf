@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 12:54:58 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:42:04 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ extern char 		*g_flag_length;
 **			list_funx
 */
 void		ft_lstadd_end(conv_obj *temp, conv_obj *new);
-void		ft_putlist(conv_obj *t);
+void		ft_putobj(conv_obj *t);
 conv_obj	*new_conv_obj(void);
 void		test_print(conv_obj *obj);
 
@@ -95,10 +95,10 @@ int			ft_numlen_base(long long n, int base);
 */
 int			utf_len(wchar_t *wide);
 
+
 /*
 ** 			con_funx
 */
-void		p_func(conv_obj *obj, va_list args);
 void		i_func(conv_obj *obj, va_list args);
 void		O_func(conv_obj *obj, va_list args);
 void		u_func(conv_obj *obj, va_list args);
@@ -129,6 +129,10 @@ void		S_func(conv_obj *obj, va_list args);
 void		c_func(conv_obj *obj, va_list args);
 void		C_func(conv_obj *obj, va_list args);
 
+/*
+**			xp_funx
+*/
+void		p_func(conv_obj *obj, va_list args);
 
 
 /*

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/20 20:06:42 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:07:56 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	pop_str(conv_obj *obj, char **str)
 {
-	// printf("pop_str: sentinel: %s\n", *str);
+	if (DEBUG_POP) printf("pop_str: sentinel: %s\n", *str);
 
 	int		i;
 	int		j;
 	char	*p_str;
 
 	i = 0;
-	while (str[0][i] != '%')
+	while (str[0][i] != '%' && str[0][i] != '\0')
 		i++;
 	p_str = (char *)malloc(i + 1);
 	j = 0;
@@ -32,8 +32,9 @@ void	pop_str(conv_obj *obj, char **str)
 		j++;
 	}
 	p_str[j] = '\0';
-	// printf("pop_str: p_str: %s\n", p_str);
+	if (DEBUG_POP) printf("pop_str: p_str: %s\n", p_str);
 	obj->str = p_str;
+	obj->con_typ = 't';
 }
 
 void	pop_flags(conv_obj *obj, char **sentinel)

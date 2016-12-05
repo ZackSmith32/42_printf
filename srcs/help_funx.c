@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/26 22:45:35 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:26:20 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,7 @@
 
 int		temp_not_null(conv_obj *temp)
 {
-	if ( 	
-			temp->minus == 0 &&
-			temp->plus == 0 &&
-			temp->hash == 0 &&
-			temp->space == 0 &&
-			temp->zero == 0 &&
-			temp->len_f == 0 &&
-			temp->con_typ == 0 &&
-			temp->width == 0 &&
-			temp->w_star == 0 &&
-			temp->prec == 1 &&
-			temp->p_star == 0 &&
-			temp->str == 0
-		)
+	if (temp->str == 0)
 		return (0);
 	return (1);
 }
@@ -74,6 +61,18 @@ char		*ft_itoa3(long long nbr)
 		ans[0] = '-';
 	return (ans);
 }
+int			ft_numlen_base(long long n, int base)
+{
+	int		i;
+
+	i = 0;
+	while (n > 0)
+	{
+		n = n / base;
+		i++;
+	}
+	return (i);
+}
 
 char		*ft_itoa_base(unsigned long long n, int base)
 {
@@ -102,18 +101,6 @@ char		*ft_itoa_base(unsigned long long n, int base)
 	return (str);
 }
 
-int			ft_numlen_base(long long n, int base)
-{
-	int		i;
-
-	i = 0;
-	while (n > 0)
-	{
-		n = n / base;
-		i++;
-	}
-	return (i);
-}
 
 
 

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 12:57:19 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:41:00 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,5 @@ int		DEBUG = 0;
 int		DEBUG_D = 0;
 int		DEBUG_POP = 0;
 int		DEBUG_o = 0;
-int		DEBUG_s = 1;
-int		DEBUG_c = 1;
-
-void		p_func(conv_obj *obj, va_list args)
-{
-	return ;
-}
+int		DEBUG_s = 0;
+int		DEBUG_c = 0;

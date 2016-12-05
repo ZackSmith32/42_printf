@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 12:56:22 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:40:43 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
 	// printf("pop_obj: str: %s\n", obj->str);
 	// printf("pop_obj: plus: %d\n", obj->plus);
 	// (*sentinel)++;
-	// increment_sent(obj);
 	// printf("pop_obj: con_typ = %c\n", obj->con_typ);
+	// increment_sent(obj);
 	// printf("pop_obj: n: %d\n", obj->n);
 	if (DEBUG) printf("pop_obj: out: sentinel = %s\n", *sentinel);
 	return (1);
@@ -65,23 +65,27 @@ char	*mission_control(char **sentinel, va_list args)
 	if (DEBUG) printf("mc: in:\n");
 	conv_obj	*item;
 	conv_obj	*temp;
+	int			i;
 
-	item = new_conv_obj();
-	temp = item;
+	temp = new_conv_obj();
+	item = temp;
 	while (sentinel[0][0] != '\0')
 	{
 		if (DEBUG) printf(">>>>>>>>>>>>>start\n");
 		if (1) printf("mc: sentinel: %s\n", *sentinel);
-		if (temp_not_null(temp))
+		if (i)
 			temp  = new_conv_obj();
 		pop_obj(temp, sentinel, args);
 		con_hq(temp, args);
 		test_print(temp);
 		ft_lstadd_end(item, temp);
+		i++;
 		if (DEBUG) printf(">>>>>>>>>>>>>end\n\n");
 	}
 	// test_print(item);
 	// printf("mc: temp->str: %s\n", temp->str);
+	ft_putstr("wtf");
+	ft_putobj(item);
 
 	return (0);
 }
@@ -100,11 +104,17 @@ int		ft_printf(char *sentinel, ...)
 
 int		main(void)
 {
-	wint_t		c;
+	int		*a;
+	char	*b = "abcde";
+	int		c;
+	int		**d;
 
-	c = L'b';
-	ft_printf("%lc", c);
-	printf("%lc\n", c);
+	c = 5;
+	a = &c;
+	d = &a;
+
+	ft_printf("abcd  %d fifty five %c aloha%s\n", c, 'z', b);
+	// printf("abcd  %d fifty five %c aloha%s\n", c, 'z', b);
 
 	printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	return (0);
@@ -127,11 +137,14 @@ int		main(void)
 	/*
 	setlocale(LC_ALL, "");
 
-	 wint_t		y;
+	wint_t		y;
 	wchar_t			*z;
+	wint_t		c;
 
 	z = L"abcd";
+	c = L'b';
 
+	ft_printf("%C", 'c');
 	ft_printf("%ls", z);
 	printf("%ls", z);
 

@@ -6,12 +6,11 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/01 17:45:19 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 21:10:48 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-// #include "../includes/func_list.h"
 
 void	x_func(conv_obj *obj, va_list args)
 {
@@ -34,5 +33,17 @@ void	X_func(conv_obj *obj, va_list args)
 		i++;
 	}
 	return ;
+}
+
+void		p_func(conv_obj *obj, va_list args)
+{
+	void	*ptr;
+	char	*ret;
+
+	ptr = va_arg(args, void *);
+	ret = (char *)ft_memalloc(ft_strlen(ptr) + 3);
+	ft_strcpy(ret, "0x\0");
+	ft_strcat(ret, ft_itoa_base((unsigned long long)ptr, 16));
+	obj->str = ret;
 }
 
