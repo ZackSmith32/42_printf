@@ -1,1 +1,1 @@
-gcc srcs/* -I includes/ft_printf.h -L. includes/libft/libft.a
+gcc work/ft_printf_main.c -I includes/ft_printf.h includes/libft.h -L. -lftprintf

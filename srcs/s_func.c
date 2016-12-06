@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:11:44 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 19:06:30 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char	*s_wide(wchar_t wide)
 {
 	if (DEBUG_s) printf("s_wide: in\n");
 	char		*ret;
-	int			i;
 
 	if (wide <= 0x78)
 		ret = s_wide_1(wide);

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 12:38:46 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 19:03:02 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	D_func(conv_obj *obj, va_list args)
 
 void	d_func(conv_obj *obj, va_list args)
 {
-	char	*holder;
-
 	star_args(obj, args);
 	if (DEBUG_D) printf("d_func: in: obj->len_f = |%s|\n", obj->len_f);
 	if (obj->w_star)

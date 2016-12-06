@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:41:00 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/04 22:52:09 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,4 @@ int		DEBUG_POP = 0;
 int		DEBUG_o = 0;
 int		DEBUG_s = 0;
 int		DEBUG_c = 0;
+int		DEBUG_LIST = 0;

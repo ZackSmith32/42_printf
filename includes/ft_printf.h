@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:42:04 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 19:24:19 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ extern int DEBUG_POP;
 extern int DEBUG_o;
 extern int DEBUG_s;
 extern int DEBUG_c;
+extern int DEBUG_LIST;
 
 typedef struct	a_list
 {
@@ -58,6 +59,14 @@ typedef struct		z_list
 extern f_list		g_func_arr[15];
 extern char 		*g_flag_norm;
 extern char 		*g_flag_length;
+
+/*
+**			ft_printf
+*/
+int		pop_obj(conv_obj *obj, char **sentinel);
+void	con_hq(conv_obj *obj, va_list args);
+char	*mission_control(char **sentinel, va_list args);
+int		ft_printf(char *sentinel, ...);
 
 /*
 **			list_funx

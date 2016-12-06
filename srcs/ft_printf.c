@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:40:43 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 19:35:22 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /*
 ** all the pop funcitons return sentinel pointing at the next char to analyze
 */
-int		pop_obj(conv_obj *obj, char **sentinel, va_list args)
+int		pop_obj(conv_obj *obj, char **sentinel)
 {
 	if (DEBUG) printf("pop_obj: in : sentinel = %s\n", *sentinel);
 
@@ -60,7 +60,7 @@ void	con_hq(conv_obj *obj, va_list args)
 	}
 }
 
-char	*mission_control(char **sentinel, va_list args)
+int		mission_control(char **sentinel, va_list args)
 {
 	if (DEBUG) printf("mc: in:\n");
 	conv_obj	*item;
@@ -69,56 +69,39 @@ char	*mission_control(char **sentinel, va_list args)
 
 	temp = new_conv_obj();
 	item = temp;
+	i = 0;
 	while (sentinel[0][0] != '\0')
 	{
 		if (DEBUG) printf(">>>>>>>>>>>>>start\n");
-		if (1) printf("mc: sentinel: %s\n", *sentinel);
+		// if (1) printf("mc: sentinel: %s\n", *sentinel);
 		if (i)
 			temp  = new_conv_obj();
-		pop_obj(temp, sentinel, args);
+		pop_obj(temp, sentinel);
 		con_hq(temp, args);
-		test_print(temp);
+		// test_print(temp);
 		ft_lstadd_end(item, temp);
 		i++;
 		if (DEBUG) printf(">>>>>>>>>>>>>end\n\n");
 	}
 	// test_print(item);
 	// printf("mc: temp->str: %s\n", temp->str);
-	ft_putstr("wtf");
-	ft_putobj(item);
+	
 
-	return (0);
+	return (ft_putobj(item));
 }
 
 int		ft_printf(char *sentinel, ...)
 {
 	va_list args;
-	int		x;
 
 	va_start(args, sentinel);
-	mission_control(&sentinel, args);
+	return (mission_control(&sentinel, args));
 	va_end(args);
 	return (0);
 }
 
 
-int		main(void)
-{
-	int		*a;
-	char	*b = "abcde";
-	int		c;
-	int		**d;
 
-	c = 5;
-	a = &c;
-	d = &a;
-
-	ft_printf("abcd  %d fifty five %c aloha%s\n", c, 'z', b);
-	// printf("abcd  %d fifty five %c aloha%s\n", c, 'z', b);
-
-	printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-	return (0);
-}
 
 
 
