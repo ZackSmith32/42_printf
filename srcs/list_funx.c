@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 19:07:23 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 20:04:16 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,32 +80,23 @@ void	test_print(conv_obj *obj)
 
 }
 
-void		ft_putobj(conv_obj *t)
+int		ft_putobj(conv_obj *t)
 {
 	if (DEBUG_LIST) printf("in: ft_putlist\n");
 	if (DEBUG_LIST) printf("head str: %s\n", t->str);
 	int		i;
+	int		j;
 
 	if (!t)
 		ft_putstr("*t = NULL\n");
 	i = 0;
+	j = 0;
 	while (t)
 	{
-		// printf("in while");
-		// printf("%s", t->str);
-		// ft_putstr("[");
 		ft_putstr(t->str);
-		// ft_putstr("/");
-		// ft_putnbr(t->plus);
-		// ft_putstr("/");
-		// ft_putnbr(t->width);
-		// ft_putstr("/");
-		// ft_putnbr(t->prec);
-		// ft_putstr("]");
+		j += ft_strlen(t->str);
 		t = t->next;
-		// if (t)
-		// 	ft_putstr(" => ");
 		i++;
 	}
-	ft_putstr("\n");
+	return (j);
 }

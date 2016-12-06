@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 19:35:22 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 21:18:07 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 void	con_hq(conv_obj *obj, va_list args)
 {
 	if (DEBUG) printf("con_hq: in\n");
-	if (obj->f)
-	{
-		if (DEBUG) printf("con_hq: obj->f exists\n");
-		(obj->f)(obj, args);
-	}
+
 }
 
 int		mission_control(char **sentinel, va_list args)
@@ -77,7 +73,8 @@ int		mission_control(char **sentinel, va_list args)
 		if (i)
 			temp  = new_conv_obj();
 		pop_obj(temp, sentinel);
-		con_hq(temp, args);
+		if (obj->f)
+			(obj->f)(obj, args);
 		// test_print(temp);
 		ft_lstadd_end(item, temp);
 		i++;
@@ -85,8 +82,6 @@ int		mission_control(char **sentinel, va_list args)
 	}
 	// test_print(item);
 	// printf("mc: temp->str: %s\n", temp->str);
-	
-
 	return (ft_putobj(item));
 }
 

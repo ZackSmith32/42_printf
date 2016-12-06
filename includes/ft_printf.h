@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 19:24:19 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 21:13:43 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,16 @@ extern char 		*g_flag_length;
 /*
 **			ft_printf
 */
-int		pop_obj(conv_obj *obj, char **sentinel);
-void	con_hq(conv_obj *obj, va_list args);
-char	*mission_control(char **sentinel, va_list args);
-int		ft_printf(char *sentinel, ...);
+int			pop_obj(conv_obj *obj, char **sentinel);
+void		con_hq(conv_obj *obj, va_list args);
+int			mission_control(char **sentinel, va_list args);
+int			ft_printf(char *sentinel, ...);
 
 /*
 **			list_funx
 */
 void		ft_lstadd_end(conv_obj *temp, conv_obj *new);
-void		ft_putobj(conv_obj *t);
+int		ft_putobj(conv_obj *t);
 conv_obj	*new_conv_obj(void);
 void		test_print(conv_obj *obj);
 
@@ -89,6 +89,8 @@ void		pop_length(conv_obj *obj, char **sentinel);
 ** 			pop_funx2
 */
 void		pop_con(conv_obj *obj, char **sentinel);
+void		non_func(conv_obj *obj, va_list args);
+
 
 /*
 **			help_funx

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/11/26 22:27:50 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/05 21:19:14 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	pop_con(conv_obj *obj, char **sentinel)
 		}
 		i++;
 	}
+	obj->str = ft_strdup(*sentinel)
+	obj->f = g_func_arr[15].f;
 }
