@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob.c                                             :+:      :+:    :+:   */
+/*   funx__pop2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:35:05 by zsmith           ###   ########.fr       */
+/*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
+/*   Updated: 2016/12/08 12:37:32 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char *g_flag_norm = "-+# 0";
-char *g_flag_length = "hljz";
+void	pop_con(conv_obj *obj, char **sentinel)
+{
+	int		i;
 
-f_list g_func_arr[] = {
-	{'s', &s_func},
-	{'S', &S_func},
-	{'p', &p_func},
-	{'d', &d_func},
-	{'D', &D_func},
-	{'i', &i_func},
-	{'o', &o_func},
-	{'O', &O_func},
-	{'u', &u_func},
-	{'U', &U_func},
-	{'x', &x_func},
-	{'X', &X_func},
-	{'c', &c_func},
-	{'C', &C_func},
-	{'%', &non_func}
-};
+	i = 0;
+	while (i < 16)
+	{
+		if (g_func_arr[i].f_nm == **sentinel)
+		{
+			obj->con_typ = **sentinel;
+			obj->f = g_func_arr[i].f;
+			(*sentinel)++;
+			break ;
+		}
+		i++;
+	}
+}
+
+void	pop_parse(conv_obj *obj)
+{
+	if (obj->minus == 1)
+		obj->zero = 0;
+	if (obj->plus == 1)
+		obj->space = 0;
+	if (obj->prec != -1)
+		obj->zero = 0;
+}
