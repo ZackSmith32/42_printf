@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 21:10:48 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/07 10:07:03 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,10 @@ void		p_func(conv_obj *obj, va_list args)
 	obj->str = ret;
 }
 
+void		non_func(conv_obj *obj, va_list args)
+{
+	if (obj->w_star)
+		obj->width = va_arg(args, int);
+	obj->str = ft_strdup("%");
+	d_width(obj);
+}

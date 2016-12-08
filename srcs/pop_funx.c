@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:07:56 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 10:19:59 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	pop_precision(conv_obj *obj, char **sentinel)
 	i = 0;
 	while (ft_isdigit(sentinel[0][i]))
 		i++;
-	holder = ft_memalloc(i + 1);
+	holder = (char *)ft_memalloc(i + 1);
 	i = 0;
 	while (ft_isdigit(**sentinel))
 	{
@@ -132,7 +132,7 @@ void	pop_length(conv_obj *obj, char **sentinel)
 	if (ft_strc(g_flag_length, **sentinel))
 		(*sentinel)++;
 	if (DEBUG_POP) printf("pop_length: out: obj->len_f = %s\n", obj->len_f);
-	obj->str = "*";
+	obj->str = ft_strdup("*");
 }
 
 

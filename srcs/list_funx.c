@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 20:04:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/07 18:59:04 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ conv_obj	*new_conv_obj(void)
 	newnew->len_f = "\0";
 	newnew->width = 0;
 	newnew->w_star = 0;
-	newnew->prec = 0;
+	newnew->extra = 0;
+	newnew->prec = -1;
 	newnew->p_star = 0;
 	newnew->con_typ = 0;
 	newnew->str = 0;
@@ -95,6 +96,8 @@ int		ft_putobj(conv_obj *t)
 	{
 		ft_putstr(t->str);
 		j += ft_strlen(t->str);
+		if (t->extra == 1)
+			j++;
 		t = t->next;
 		i++;
 	}

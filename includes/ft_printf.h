@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 21:13:43 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 09:47:28 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	a_list
 	char			con_typ;
 	int				data_p_star;
 	int				data_w_star;
+	int				extra;
 	void			(*f)(struct a_list *obj, va_list args);
 	int				chr_cnt;
 	char			*str;
@@ -90,16 +91,15 @@ void		pop_length(conv_obj *obj, char **sentinel);
 */
 void		pop_con(conv_obj *obj, char **sentinel);
 void		non_func(conv_obj *obj, va_list args);
-
+void		pop_parse(conv_obj *obj);
 
 /*
 **			help_funx
 */
-int			temp_not_null(conv_obj *temp);
 int			ft_strc(char *str, char c);
 char		*ft_itoa3(long long nbr);
 char		*ft_itoa_base(unsigned long long n, int base);
-int			ft_numlen_base(long long n, int base);
+int			ft_numlen_base(unsigned long long n, int base);
 
 /*
 **			help_funx2
@@ -124,6 +124,8 @@ void		D_func(conv_obj *obj, va_list args);
 void		d_func(conv_obj *obj, va_list args);
 void		d_width(conv_obj *obj);
 void		d_precision(conv_obj *obj);
+void		d_width_zero(conv_obj *obj);
+
 
 /*
 **			o_funx
@@ -131,6 +133,8 @@ void		d_precision(conv_obj *obj);
 void		o_func(conv_obj *obj, va_list args);
 void		o_hash(conv_obj *obj);
 void		x_hash(conv_obj *obj);
+void		x_hash_alt(conv_obj *obj);
+
 
 /*
 **			s_funx

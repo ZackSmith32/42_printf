@@ -6,20 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/04 22:26:20 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 09:52:19 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		temp_not_null(conv_obj *temp)
-{
-	if (temp->str == 0)
-		return (0);
-	return (1);
-}
-
-int		ft_strc(char *str, char c)
+int			ft_strc(char *str, char c)
 {
 	if (DEBUG) printf("ft_strc: in: str = %s c = %c\n", str, c);
 	int		i;
@@ -38,12 +31,14 @@ int		ft_strc(char *str, char c)
 char		*ft_itoa3(long long nbr)
 {
 	if (DEBUG_D) printf("ft_itoa3: in\n");
+	// printf("num = %lld\n", nbr);
 	char	*ans;
 	int		i;
 	long long	n;
 
 	n = nbr;
 	i = ft_numlen(n);
+	// printf("i = %d\n", i);
 	if (n < 0)
 		n = n * -1;
 	ans = (char *)malloc(sizeof(char) * (i + 1));
@@ -61,7 +56,8 @@ char		*ft_itoa3(long long nbr)
 		ans[0] = '-';
 	return (ans);
 }
-int			ft_numlen_base(long long n, int base)
+
+int			ft_numlen_base(unsigned long long n, int base)
 {
 	int		i;
 
@@ -71,12 +67,15 @@ int			ft_numlen_base(long long n, int base)
 		n = n / base;
 		i++;
 	}
+	if (i == 0)
+		i = 1;
 	return (i);
 }
 
 char		*ft_itoa_base(unsigned long long n, int base)
 {
 	if (DEBUG_o) printf("ft_itoa_base: in: n = %lld\n", n);
+	if (DEBUG_o) printf("ft_itoa_base: in: n = %llx\n", n);
 	int		i;
 	char 	lst[17];
 	char	*str;
@@ -88,7 +87,7 @@ char		*ft_itoa_base(unsigned long long n, int base)
 		return (NULL);
 	if (n == 0)
 	{
-		str[0] = 0;
+		str[0] = '0';
 		return (str);
 	}
 	while (n != 0)

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/05 19:03:02 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 10:42:53 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,21 @@ void	d_func(conv_obj *obj, va_list args)
 		obj->width = va_arg(args, int);
 	if (obj->p_star)
 		obj->prec = va_arg(args, int);
-	if (!ft_strcmp(obj->len_f, "hh")
-			|| !ft_strcmp(obj->len_f, "h")
-			|| !ft_strlen(obj->len_f))
-	{
-		if (DEBUG_D) printf("obj->len_f = hh\n");
-		obj->str = ft_itoa3((long long)va_arg(args, int));
-		if (DEBUG_D) printf("obj-str = %s\n", obj->str);
-	}
-	if (!ft_strcmp(obj->len_f, "l")
-			|| !ft_strcmp(obj->len_f, "ll"))
-	{
-		if (DEBUG_D) printf("obj->len_f = ll\n");
+	if (!ft_strlen(obj->len_f))
+		obj->str = ft_itoa3((int)va_arg(args, int));
+	if (!ft_strcmp(obj->len_f, "hh"))
+		obj->str = ft_itoa3((char)va_arg(args, int));
+	if (!ft_strcmp(obj->len_f, "h"))
+		obj->str = ft_itoa3((short)va_arg(args, int));
+	if (!ft_strcmp(obj->len_f, "l"))
+		obj->str = ft_itoa3((long)va_arg(args, long long));
+	if (!ft_strcmp(obj->len_f, "ll"))
 		obj->str = ft_itoa3(va_arg(args, long long));
-		if (DEBUG_D) printf("obj-str = %s\n", obj->str);		
-	}
-	if (!ft_strcmp(obj->len_f, "j")
-		|| !ft_strcmp(obj->len_f, "z"))
-	{
-		if (DEBUG_D) printf("obj->len_f = j/z\n");
+	if (!ft_strcmp(obj->len_f, "j") || !ft_strcmp(obj->len_f, "z"))
 		obj->str = ft_itoa3(va_arg(args, unsigned long long));
-	}
 	d_precision(obj);
 	plus_func(obj);
 	space_flag(obj);
-	if (ft_strlen(obj->str) == 0)
-		return ;
 	d_width(obj);
 	return ;
 }
@@ -63,28 +52,25 @@ void	d_precision(conv_obj *obj)
 	char	*holder;
 	int		diff;
 
-	if (ft_atoi(obj->str) == 0 && obj->prec == 0)
+	if (!ft_strcmp(obj->str, "0") && obj->prec == 0)
 	{
 		obj->str = ft_memalloc(1);
 		return ;
 	}
+	if (ft_strchr(obj->str, '-'))
+		obj->prec++;
 	diff = obj->prec - ft_strlen(obj->str);
 	if (diff <= 0)
 		return ;
-	new_str = ft_memalloc(obj->prec);
+	new_str = (char *)ft_memalloc(obj->prec);
 	ft_memset(new_str, 48, (size_t)(obj->prec + 1));
 	holder = new_str + diff;
 	ft_strcpy(holder, obj->str);
 	free(obj->str);
-	obj->str = new_str;	
+	obj->str = new_str;
+	d_width_zero(obj);
 }
 
-/*
-	if (!minus) 
-		then start copy into new string starting in the middle such that the result is right justification
-	else
-		start the copy at the beginning (left justified)		 
-*/
 void	d_width(conv_obj *obj)
 {
 	if (DEBUG_D) printf("width: in\n");
@@ -95,18 +81,38 @@ void	d_width(conv_obj *obj)
 	diff = obj->width - ft_strlen(obj->str);
 	if (diff > 0)
 	{
-		new_str = ft_memalloc(obj->width + 1);
-		ft_memset(new_str, obj->zero ? 48 : 32, (size_t)(obj->width));
-		if (DEBUG_D) printf("width: in: after memset\n");
+		new_str = (char *)ft_memalloc(obj->width + 1);
+		ft_memset(new_str, obj->zero == 1 ? 48 : 32, (size_t)(obj->width));
+		if (DEBUG_D) printf("width: in: after memset %s\n", new_str);
 		if (!obj->minus)
 			holder = new_str + diff;
 		else
 			holder = new_str;
 		if (DEBUG_D) printf("width: holder\n");
-
 		ft_strncpy(holder, obj->str, ft_strlen(obj->str));
-		free(obj->str);
+		// free(obj->str);
 		obj->str = new_str;
+		if (obj->zero == 1 && (obj->con_typ == 'd' || obj->con_typ == 'D') &&
+			(obj->plus == 1 || ft_strchr(obj->str, '-')))
+			d_width_zero(obj);
 	}
 }
+
+void	d_width_zero(conv_obj *obj)
+{
+	int		i;
+
+	i = 0;
+	while (obj->str[i] != '-' && obj->str[i] != '+' && obj->str[i] != '\0')
+		i++;
+	if (obj->str[i] == '\0')
+		return ;
+	obj->str[0] = obj->str[i];
+	obj->str[i] = '0';
+}
+
+
+
+
+
 

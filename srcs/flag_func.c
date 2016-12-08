@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/01 15:02:38 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 08:02:18 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ void	plus_func(conv_obj *obj)
 {
 	if (DEBUG_D) printf("plus_func: in\n");
 	char	*new_str;
+	char	a;
+	int		i;
 
 	if (obj->plus == 0)
 		return ;
+	i = 0;
 	if (ft_strchr(obj->str, '-'))
 		return ;
+	else
+		a = '+';
 	new_str = ft_memalloc(ft_strlen(obj->str) + 2);
-	new_str[0] = '+';
+	new_str[0] = a;
 	ft_strcat(new_str, obj->str);
 	free(obj->str);
 	obj->str = new_str;
