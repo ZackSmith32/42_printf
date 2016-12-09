@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:56:42 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/09 13:37:39 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ conv_obj	*new_conv_obj(void)
 	newnew->len_f = (char *)ft_memalloc(2);
 	newnew->prec = -1;
 	newnew->str = ft_strdup("*");
-	printf("addy= %p\n", (newnew->str));
 	return (newnew);
 }
 
