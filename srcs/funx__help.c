@@ -6,14 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 14:47:48 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:41:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-
-static int		ft_numlen_base(unsigned long long n, int base)
+static int					ft_numlen_base(unsigned long long n, int base)
 {
 	int		i;
 
@@ -39,7 +38,7 @@ static unsigned long long	ft_abs(long long num)
 	return (z);
 }
 
-char		*ft_itoa3(long long nbr)
+char						*ft_itoa3(long long nbr)
 {
 	char				*ans;
 	int					i;
@@ -65,8 +64,6 @@ char		*ft_itoa3(long long nbr)
 	return (ans);
 }
 
-
-
 char		*ft_itoa_base(unsigned long long n, int base)
 {
 	int		i;
@@ -75,7 +72,7 @@ char		*ft_itoa_base(unsigned long long n, int base)
 
 	ft_strcpy(lst, "0123456789abcdef");
 	i = ft_numlen_base(n, base);
-	str = ft_memalloc(sizeof(char) * i + 1);
+	str = (char *)ft_memalloc(sizeof(char) * i + 1);
 	if (str == NULL)
 		return (NULL);
 	if (n == 0)

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 22:55:41 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:56:45 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	o_hash(conv_obj *obj)
 	obj->str = new;
 }
 
-void	o_func(conv_obj *obj, va_list args)
+void		o_func(conv_obj *obj, va_list args)
 {
 	int		n;
 
@@ -51,7 +51,7 @@ void	o_func(conv_obj *obj, va_list args)
 	x_hash_alt(obj);
 }
 
-void	O_func(conv_obj *obj, va_list args)
+void		O_func(conv_obj *obj, va_list args)
 {
 	o_func(obj, args);
 	return ;

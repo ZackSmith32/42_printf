@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 14:47:53 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:39:40 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	star_args(conv_obj *obj, va_list args)
 int			ft_strc(char *str, char c)
 {
 	int		i;
+	
 	if (str == 0)
 		return (0);
 	i = 0;

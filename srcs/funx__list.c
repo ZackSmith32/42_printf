@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:10:16 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:56:42 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		ft_putobj(conv_obj *t)
 		j += ft_strlen(t->str);
 		if (t->extra == 1)
 			j++;
-
 		k = t;
 		// printf("free: %p\n\n", t->len_f);
 		free(t->len_f);
@@ -63,5 +62,6 @@ int		ft_putobj(conv_obj *t)
 		free(k);
 		i++;
 	}
+	free(t);
 	return (j);
 }
