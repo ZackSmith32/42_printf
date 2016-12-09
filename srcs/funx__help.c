@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 13:51:20 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 14:47:48 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,26 +89,4 @@ char		*ft_itoa_base(unsigned long long n, int base)
 		n = n / base;
 	}
 	return (str);
-}
-
-int		utf_len(wchar_t *wide)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (wide[i] != 0)
-	{
-		if (wide[i] <= 0x78)
-			j += 1;
-		else if (wide[i] <= 0x1fff)
-			j += 2;
-		else if (wide[i] <= 0xffff)
-			j += 3;
-		else
-			j += 4;
-		i++;
-	}
-	return (j);
 }

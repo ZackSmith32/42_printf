@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:36:38 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:32:36 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	D_func(conv_obj *obj, va_list args)
 {
-	obj->len_f = "l";
+	free(obj->len_f);
+	ft_strcpy(obj->len_f, "l");
 	d_func(obj, args);
 	return ;
 }
@@ -22,10 +23,7 @@ void	D_func(conv_obj *obj, va_list args)
 void	d_func(conv_obj *obj, va_list args)
 {
 	star_args(obj, args);
-	if (obj->w_star)
-		obj->width = va_arg(args, int);
-	if (obj->p_star)
-		obj->prec = va_arg(args, int);
+	free(obj->str);
 	if (!ft_strlen(obj->len_f))
 		obj->str = ft_itoa3((int)va_arg(args, int));
 	if (!ft_strcmp(obj->len_f, "hh"))
@@ -53,6 +51,7 @@ void	d_precision(conv_obj *obj)
 
 	if (!ft_strcmp(obj->str, "0") && obj->prec == 0)
 	{
+		free(obj->str);
 		obj->str = ft_memalloc(1);
 		return ;
 	}
@@ -86,7 +85,7 @@ void	d_width(conv_obj *obj)
 		else
 			holder = new_str;
 		ft_strncpy(holder, obj->str, ft_strlen(obj->str));
-		// free(obj->str);
+		free(obj->str);
 		obj->str = new_str;
 		if (obj->zero == 1 && (obj->con_typ == 'd' || obj->con_typ == 'D') &&
 			(obj->plus == 1 || ft_strchr(obj->str, '-')))

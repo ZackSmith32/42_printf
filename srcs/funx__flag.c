@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 13:21:30 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 14:47:53 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,26 @@ int			ft_strc(char *str, char c)
 		i++;
 	}
 	return (0);
+}
+
+int		utf_len(wchar_t *wide)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (wide[i] != 0)
+	{
+		if (wide[i] <= 0x78)
+			j += 1;
+		else if (wide[i] <= 0x1fff)
+			j += 2;
+		else if (wide[i] <= 0xffff)
+			j += 3;
+		else
+			j += 4;
+		i++;
+	}
+	return (j);
 }

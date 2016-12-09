@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:37:57 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:10:16 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,11 @@ conv_obj	*new_conv_obj(void)
 {
 	conv_obj	*newnew;
 
-	newnew = (conv_obj *)malloc(sizeof(conv_obj));
-	newnew->minus = 0;
-	newnew->plus = 0;
-	newnew->hash = 0;
-	newnew->space = 0;
-	newnew->zero = 0;
-	newnew->len_f = "\0";
-	newnew->width = 0;
-	newnew->w_star = 0;
-	newnew->extra = 0;
+	newnew = (conv_obj *)ft_memalloc(sizeof(conv_obj));
+	newnew->len_f = (char *)ft_memalloc(2);
 	newnew->prec = -1;
-	newnew->p_star = 0;
-	newnew->con_typ = 0;
-	newnew->str = 0;
-	newnew->next = 0;
+	newnew->str = ft_strdup("*");
+	printf("addy= %p\n", (newnew->str));
 	return (newnew);
 }
 
@@ -48,8 +38,9 @@ void		ft_lstadd_end(conv_obj *start, conv_obj *new)
 
 int		ft_putobj(conv_obj *t)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
+	conv_obj	*k;
 
 	if (!t)
 		ft_putstr("*t = NULL\n");
@@ -57,11 +48,19 @@ int		ft_putobj(conv_obj *t)
 	j = 0;
 	while (t)
 	{
+		// ft_putstr("\n\n");
 		ft_putstr(t->str);
+		// ft_putstr("\n\n");
 		j += ft_strlen(t->str);
 		if (t->extra == 1)
 			j++;
+
+		k = t;
+		// printf("free: %p\n\n", t->len_f);
+		free(t->len_f);
+		free(t->str);
 		t = t->next;
+		free(k);
 		i++;
 	}
 	return (j);

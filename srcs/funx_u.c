@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:56:21 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 14:00:34 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 20:01:10 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	u_func(conv_obj *obj, va_list args)
 {
 	star_args(obj, args);
-	if (obj->w_star)
-		obj->width = va_arg(args, int);
-	if (obj->p_star)
-		obj->prec = va_arg(args, int);
+	free(obj->str);
 	if (!ft_strcmp(obj->len_f, "hh"))
 		obj->str = ft_itoa_base((unsigned char)va_arg(args, unsigned int), 10);
 	if (!ft_strcmp(obj->len_f, "h"))
@@ -42,7 +39,7 @@ void	u_func(conv_obj *obj, va_list args)
 
 void	U_func(conv_obj *obj, va_list args)
 {
-	obj->len_f = "l";
+	ft_strcpy(obj->len_f, "l");
 	u_func(obj, args);
 	return ;
 }

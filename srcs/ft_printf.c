@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 14:03:52 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:29:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '%')
 	{
+		(*sentinel)++;
 		pop_flags(obj, sentinel);
 		pop_width(obj, sentinel);
 		pop_precision(obj, sentinel);
@@ -39,11 +40,15 @@ int		mission_control(char **sentinel, va_list args)
 	item = temp;
 	i = 0;
 	if (**sentinel == 0)
+	{
+		free(item->str);
 		item->str = ft_strdup("");
+	}
 	while (sentinel[0][0] != '\0')
 	{
 		if (i)
 			temp  = new_conv_obj();
+		// printf("temp -> %p\n", temp->str);
 		pop_obj(temp, sentinel);
 		if (temp->f)
 			(temp->f)(temp, args);
