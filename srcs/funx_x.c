@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 11:01:29 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/09 14:23:56 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	x_func(conv_obj *obj, va_list args)
 {
+	// printf("obj->str = %s\n", obj->str);
 	o_func(obj, args);
 }
 

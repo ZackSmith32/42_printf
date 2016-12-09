@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:37:32 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/09 14:24:05 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	pop_con(conv_obj *obj, char **sentinel)
 {
+	// printf("sentinel = %s\n", *sentinel);
 	int		i;
 
 	i = 0;
