@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_func.c                                           :+:      :+:    :+:   */
+/*   funx_s.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 10:49:26 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 23:52:50 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	s_func(conv_obj *obj, va_list args)
 	int		i;
 	wchar_t	*w;
 
+	free(obj->str);
 	if (!ft_strcmp(obj->len_f, "l"))
 	{
 		w = va_arg(args, wchar_t *);
@@ -49,6 +50,7 @@ void	c_func(conv_obj *obj, va_list args)
 	int		d;
 	char	*e;
 
+	free(obj->str);
 	d = -1;
 	if (!ft_strcmp(obj->len_f, "l"))
 		obj->str = s_wide(va_arg(args, wint_t));
@@ -60,7 +62,6 @@ void	c_func(conv_obj *obj, va_list args)
 		e = (char *)ft_memalloc(2);
 		e[0] = (char)d;
 		e[1] = '\0';
-		free(obj->str);
 		obj->str = e;
 	}
 	d_width(obj);

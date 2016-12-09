@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:34:21 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 22:58:57 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void		p_func(conv_obj *obj, va_list args)
 	void	*ptr;
 	char	*ret;
 
+	free(obj->str);
 	ptr = va_arg(args, void *);
 	ret = (char *)ft_memalloc(ft_strlen(ptr) + 3);
 	ft_strcpy(ret, "0x\0");
@@ -35,6 +36,8 @@ void		non_func(conv_obj *obj, va_list args)
 {
 	if (obj->w_star)
 		obj->width = va_arg(args, int);
+	printf("non_func obj->str %p\n", obj->str);
+	free(obj->str);
 	obj->str = ft_strdup("%");
 	d_width(obj);
 }

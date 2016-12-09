@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop_funx.c                                         :+:      :+:    :+:   */
+/*   funx__pop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:24:35 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/08 22:29:38 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	pop_str(conv_obj *obj, char **str)
 		j++;
 	}
 	p_str[j] = '\0';
+	free(obj->str);
 	obj->str = p_str;
 	obj->con_typ = 't';
 }
@@ -54,7 +55,6 @@ void	pop_flags(conv_obj *obj, char **sentinel)
 			obj->zero = 1;
 		(*sentinel)++;
 	}
-	obj->str = "*";
 }
 
 void	pop_width(conv_obj *obj, char **sentinel)
@@ -75,6 +75,7 @@ void	pop_width(conv_obj *obj, char **sentinel)
 	}
 	holder[i] = '\0';
 	i = ft_atoi(holder);
+	free(holder);
 	obj->width = i;
 }
 
@@ -100,6 +101,7 @@ void	pop_precision(conv_obj *obj, char **sentinel)
 	}
 	holder[i] = '\0';
 	i = ft_atoi(holder);
+	free(holder);
 	obj->prec = i;
 }
 
@@ -107,25 +109,24 @@ void	pop_length(conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == 'h' && (*sentinel)[1] == 'h')
 	{
-		obj->len_f = "hh";
+		ft_strcpy(obj->len_f, "hh");
 		(*sentinel)++;
 	}
 	else if (**sentinel == 'h')
-		obj->len_f = "h";
+		ft_strcpy(obj->len_f, "h");
 	if (**sentinel == 'l' && (*sentinel)[1] == 'l')
 	{
-		obj->len_f = "ll";
+		ft_strcpy(obj->len_f, "ll");
 		(*sentinel)++;
 	}
 	else if (**sentinel == 'l')
-		obj->len_f = "l";
+		ft_strcpy(obj->len_f, "l");
 	if (**sentinel == 'j')
-		obj->len_f = "j";
+		ft_strcpy(obj->len_f, "j");
 	if (**sentinel == 'z')
-		obj->len_f = "z";
+		ft_strcpy(obj->len_f, "z");
 	if (ft_strc(g_flag_length, **sentinel))
 		(*sentinel)++;
-	obj->str = ft_strdup("*");
 }
 
 
