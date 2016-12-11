@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:39:40 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 12:13:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int		utf_len(wchar_t *wide)
 	int		i;
 	int		j;
 
+	if (!wide)
+		return (0);
 	i = 0;
 	j = 0;
 	while (wide[i] != 0)

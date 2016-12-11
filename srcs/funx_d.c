@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:32:36 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/10 16:31:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	D_func(conv_obj *obj, va_list args)
 {
-	free(obj->len_f);
 	ft_strcpy(obj->len_f, "l");
 	d_func(obj, args);
 	return ;

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:56:45 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/10 16:29:25 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		o_func(conv_obj *obj, va_list args)
 
 	free(obj->str);
 	star_args(obj, args);
-	if (obj->con_typ == 'o')
+	if (obj->con_typ == 'o' || obj->con_typ == 'O')
 		n = 8;
 	else
 		n = 16;
@@ -44,6 +44,7 @@ void		o_func(conv_obj *obj, va_list args)
 		obj->str = ft_itoa_base(va_arg(args, unsigned int), n);
 	if (ft_strlen(obj->str) == 0)
 		return ;
+	// printf("o_func str = %s\n", obj->str);
 	d_precision(obj);
 	o_hash(obj);
 	x_hash(obj);
@@ -53,6 +54,7 @@ void		o_func(conv_obj *obj, va_list args)
 
 void		O_func(conv_obj *obj, va_list args)
 {
+	ft_strcpy(obj->len_f, "l");
 	o_func(obj, args);
 	return ;
 }

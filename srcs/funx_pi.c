@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/09 14:55:44 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 13:56:55 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		p_func(conv_obj *obj, va_list args)
 	ft_strcat(ret, holder);
 	free(holder);
 	obj->str = ret;
+	d_width(obj);
 }
 
 void	i_func(conv_obj *obj, va_list args)
@@ -40,6 +41,7 @@ void		non_func(conv_obj *obj, va_list args)
 	if (obj->w_star)
 		obj->width = va_arg(args, int);
 	free(obj->str);
-	obj->str = ft_strdup("%");
+	obj->str = ft_strdup(&obj->con_typ);
 	d_width(obj);
+	printf("non_func: %s\n", obj->str);
 }

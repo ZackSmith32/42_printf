@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/09 14:11:58 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 13:48:31 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,24 @@ void		ft_lstadd_end(conv_obj *start, conv_obj *new)
 
 int		ft_putobj(conv_obj *t)
 {
-	int			i;
 	int			j;
 	conv_obj	*k;
 
-	if (!t)
-		ft_putstr("*t = NULL\n");
-	i = 0;
 	j = 0;
 	while (t)
 	{
-		// ft_putstr("\n\n");
 		ft_putstr(t->str);
-		// ft_putstr("\n\n");
 		j += ft_strlen(t->str);
 		if (t->extra == 1)
+		{
+			ft_putchar('\0');
 			j++;
+		}
 		k = t;
-		// printf("free: %p\n\n", t->len_f);
 		free(t->len_f);
 		free(t->str);
 		t = t->next;
 		free(k);
-		i++;
 	}
 	free(t);
 	return (j);
