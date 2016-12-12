@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 21:14:49 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 21:31:11 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ void		o_func(conv_obj *obj, va_list args)
 	o_hash(obj);
 	if (!((obj->con_typ == 'o' || obj->con_typ == 'O') && obj->prec == 0))
 		d_precision(obj);
-	// printf("pre hash str = %s\n", obj->str);
 	x_hash(obj);
 	d_width(obj);
 	x_hash_alt(obj);
-	// printf("post hash str = %s\n", obj->str);
 }
 
 void		O_func(conv_obj *obj, va_list args)
