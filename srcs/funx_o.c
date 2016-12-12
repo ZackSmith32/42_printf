@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/10 16:29:25 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 21:14:49 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	o_hash(conv_obj *obj)
 {
 	char	*new;
 
-	if (!obj->hash || !(obj->con_typ == 'o'))
+	if (!obj->hash || !((obj->con_typ == 'o') || (obj->con_typ == 'O')) 
+		|| !ft_strcmp(obj->str, "0"))
 		return ;
 	new = (char *)ft_memalloc(ft_strlen(obj->str) + 2);
 	new[0] = '0';
@@ -35,21 +36,17 @@ void		o_func(conv_obj *obj, va_list args)
 		n = 8;
 	else
 		n = 16;
-	if (!ft_strcmp(obj->len_f, "l") || !ft_strcmp(obj->len_f, "ll"))
-		obj->str = ft_itoa_base(va_arg(args, unsigned long long), n);
-	if (!ft_strcmp(obj->len_f, "j") || !ft_strcmp(obj->len_f, "z"))
-		obj->str = ft_itoa_base(va_arg(args, unsigned long), n);
-	if (!ft_strcmp(obj->len_f, "hh") || !ft_strcmp(obj->len_f, "h")
-		|| !ft_strlen(obj->len_f))
-		obj->str = ft_itoa_base(va_arg(args, unsigned int), n);
+	casting(obj, args, n);
 	if (ft_strlen(obj->str) == 0)
 		return ;
-	// printf("o_func str = %s\n", obj->str);
-	d_precision(obj);
 	o_hash(obj);
+	if (!((obj->con_typ == 'o' || obj->con_typ == 'O') && obj->prec == 0))
+		d_precision(obj);
+	// printf("pre hash str = %s\n", obj->str);
 	x_hash(obj);
 	d_width(obj);
 	x_hash_alt(obj);
+	// printf("post hash str = %s\n", obj->str);
 }
 
 void		O_func(conv_obj *obj, va_list args)
@@ -57,4 +54,24 @@ void		O_func(conv_obj *obj, va_list args)
 	ft_strcpy(obj->len_f, "l");
 	o_func(obj, args);
 	return ;
+}
+
+void	casting(conv_obj *obj, va_list args, int n)
+{
+	if (!ft_strcmp(obj->len_f, "l"))
+		obj->str = 
+			ft_itoa_base((unsigned long)va_arg(args, unsigned long long), n);
+	else if (!ft_strcmp(obj->len_f, "ll"))
+		obj->str = ft_itoa_base(
+			(unsigned long long)va_arg(args, unsigned long long), n);
+	else if (!ft_strcmp(obj->len_f, "j"))
+		obj->str = ft_itoa_base(va_arg(args, unsigned long), n);
+	else if (!ft_strcmp(obj->len_f, "z"))
+		obj->str = ft_itoa_base(va_arg(args, unsigned long), n);
+	else if (!ft_strcmp(obj->len_f, "hh")) 
+		obj->str = ft_itoa_base((unsigned char)va_arg(args, unsigned int), n);
+	else if (!ft_strcmp(obj->len_f, "h"))
+		obj->str = ft_itoa_base((unsigned short)va_arg(args, unsigned int), n);
+	else if (!ft_strlen(obj->len_f))
+		obj->str = ft_itoa_base(va_arg(args, unsigned int), n);
 }

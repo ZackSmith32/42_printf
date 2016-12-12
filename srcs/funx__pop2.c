@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 13:55:04 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:36:49 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,27 @@ void	pop_con(conv_obj *obj, char **sentinel)
 		}
 		i++;
 	}
-	obj->con_typ = **sentinel;
-	obj->f = g_func_arr[14].f;
+	if (i == 15)
+	{
+		obj->con_typ = **sentinel;
+		obj->f = g_func_arr[14].f;
+		(*sentinel)++;
+	}
 }
 
-void	pop_parse(conv_obj *obj)
+void	pop_parse(conv_obj *obj, char **sentinel)
 {
 	if (obj->minus == 1)
 		obj->zero = 0;
 	if (obj->plus == 1)
 		obj->space = 0;
-	if (obj->prec != -1)
+	(*sentinel)--;
+	if (obj->prec != -1 && !(obj->con_typ == 'c' 
+		|| obj->con_typ == 'C' || obj->con_typ == 's' || obj->con_typ == 'S'
+		|| obj->con_typ == '%' || obj->con_typ == **sentinel))
+	{
+		printf("in if\n");
 		obj->zero = 0;
+	}
+	(*sentinel)++;
 }

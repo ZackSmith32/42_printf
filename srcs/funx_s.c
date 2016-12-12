@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 13:38:43 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:18:00 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ret_null(conv_obj *obj)
 
 void	s_precision(conv_obj *obj, char *s)
 {
+	if (!s)
+		return ;
 	if (obj->prec != -1)
 		ft_strncpy(obj->str, s, obj->prec);
 	else
@@ -48,7 +50,7 @@ void	s_func(conv_obj *obj, va_list args)
 	else 
 	{
 		s = va_arg(args, char *);
-		if (s == NULL)
+		if (s == NULL && obj->width == 0)
 			return (ret_null(obj));
 	}
 	obj->str = (char *)ft_memalloc(ft_strlen(s) + 1);
@@ -73,7 +75,11 @@ void	c_func(conv_obj *obj, va_list args)
 	free(obj->str);
 	d = -1;
 	if (!ft_strcmp(obj->len_f, "l"))
+	{
 		obj->str = s_wide(va_arg(args, wint_t));
+		if (obj->str[0] == 0)
+			obj->extra += 1;
+	}
 	else
 	{
 		d = va_arg(args, int);
@@ -91,6 +97,7 @@ void	c_func(conv_obj *obj, va_list args)
 
 void	C_func(conv_obj *obj, va_list args)
 {
+	ft_strcpy(obj->len_f, "l");
 	c_func(obj, args);
 	return ;
 }

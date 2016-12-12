@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 12:50:31 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:38:19 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 		pop_precision(obj, sentinel);
 		pop_length(obj, sentinel);
 		pop_con(obj, sentinel);
-		pop_parse(obj);
+		pop_parse(obj, sentinel);
 	}
 	else
 		pop_str(obj, sentinel);
@@ -61,7 +61,6 @@ int		ft_printf(char *sentinel, ...)
 {
 	va_list args;
 
-	// ft_putstr("hello world");
 	va_start(args, sentinel);
 	return (mission_control(&sentinel, args));
 	va_end(args);
