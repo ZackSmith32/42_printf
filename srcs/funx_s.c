@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/12 22:50:24 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/12 23:56:27 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,22 @@ void	ret_null(conv_obj *obj)
 
 void	s_precision(conv_obj *obj, char *s)
 {
+	int		i;
+
+	i = 0;
 	if (!s)
 		return ;
 	if (obj->prec != -1)
 	{
+		obj->str = (char *)ft_memalloc(obj->prec + 1);
 		ft_strncpy(obj->str, s, obj->prec);
-		// printf("obj->str = %s\n", obj->str );
-		// obj->str[obj->prec + 1] = '\0';
+		obj->str[obj->prec + 1] = '\0';
 	}
 	else
+	{
+		obj->str = (char *)ft_memalloc(ft_strlen(s) + 1);
 		ft_strcpy(obj->str, s);
+	}
 }
 
 void	s_func(conv_obj *obj, va_list args)
@@ -57,7 +63,6 @@ void	s_func(conv_obj *obj, va_list args)
 		if (s == NULL && obj->width == 0)
 			return (ret_null(obj));
 	}
-	obj->str = (char *)ft_memalloc(ft_strlen(s) + 1);
 	s_precision(obj, s);
 	if (!ft_strcmp(obj->len_f, "l"))
 		free(s);
