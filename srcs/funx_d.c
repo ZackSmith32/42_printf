@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 13:18:51 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 14:09:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	d_width(conv_obj *obj)
 	if (diff > 0)
 	{
 		new_str = (char *)ft_memalloc(obj->width + 1);
+		printf("d_width: %p\n", new_str);
 		ft_memset(new_str, obj->zero == 1 ? 48 : 32, (size_t)(obj->width));
 		if (!obj->minus)
 			holder = new_str + diff;

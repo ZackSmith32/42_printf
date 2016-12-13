@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:23:12 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 14:25:02 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	pop_str(conv_obj *obj, char **str)
 
 void	pop_flags(conv_obj *obj, char **sentinel)
 {
-	// printf("pop_flags: sentinel = %s\n", *sentinel);
 	if (**sentinel == '%')
 		(*sentinel)++;
 	else
@@ -56,7 +55,6 @@ void	pop_flags(conv_obj *obj, char **sentinel)
 			obj->zero = 1;
 		(*sentinel)++;
 	}
-	// printf("pop_flags: out: minus = %c\n", obj->minus);
 }
 
 void	pop_width(conv_obj *obj, char **sentinel)

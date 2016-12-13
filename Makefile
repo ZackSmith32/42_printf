@@ -6,7 +6,7 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/22 16:32:25 by zsmith            #+#    #+#              #
-#    Updated: 2016/12/08 14:41:54 by zsmith           ###   ########.fr        #
+#    Updated: 2016/12/13 13:27:30 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ CFILES	=	ft_printf.c			\
 			funx_o.c			\
 			funx_pi.c			\
 			funx_s.c			\
+			funx_c.c			\
 			funx_u.c			\
 			funx_x.c			\
 			glob.c				\

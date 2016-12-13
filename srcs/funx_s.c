@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 13:22:29 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 14:24:38 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	s_func(conv_obj *obj, va_list args)
 	char	*s;
 	int		i;
 	wchar_t	*w;
+	char	*test;
 
 	free(obj->str);
 	if (!ft_strcmp(obj->len_f, "l"))
@@ -73,7 +74,11 @@ void	s_func(conv_obj *obj, va_list args)
 		s = (char *)ft_memalloc(utf_len(w));
 		i = -1;
 		while (w[++i] != 0)
-			ft_strcat(s, s_wide(w[i]));
+		{
+			test = s_wide(w[i]);
+			ft_strcat(s, test);
+			free(test);
+		}
 	}
 	else 
 	{
@@ -95,40 +100,6 @@ void	S_func(conv_obj *obj, va_list args)
 	return ;
 }
 
-void	c_func(conv_obj *obj, va_list args)
-{
-	int		d;
-	char	*e;
-
-	free(obj->str);
-	d = -1;
-	if (!ft_strcmp(obj->len_f, "l"))
-	{
-		obj->str = s_wide(va_arg(args, wint_t));
-		if (obj->str[0] == 0)
-			obj->extra += 1;
-	}
-	else
-	{
-		d = va_arg(args, int);
-		if (d == 0)
-			obj->extra += 1;
-		e = (char *)ft_memalloc(2);
-		e[0] = (char)d;
-		e[1] = '\0';
-		obj->str = e;
-	}
-	d_width(obj);
-	if (d == 0)
-		obj->str[obj->width - 1] = d;
-}
-
-void	C_func(conv_obj *obj, va_list args)
-{
-	ft_strcpy(obj->len_f, "l");
-	c_func(obj, args);
-	return ;
-}
 
 
 

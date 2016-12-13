@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:38:08 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 14:19:10 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ int		mission_control(char **sentinel, va_list args)
 	{
 		if (i)
 			temp  = new_conv_obj();
-		// printf("temp -> %p\n", temp->str);
 		pop_obj(temp, sentinel);
 		if (temp->f)
-		{
-			// printf("con typ = %c\n", temp->con_typ);
 			(temp->f)(temp, args);
-		}
 		else if (ft_strchr(temp->str, '*') != NULL)
 			temp->str = ft_strdup("");
 		ft_lstadd_end(item, temp);
