@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:44:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 12:57:33 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 15:50:44 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*s_wide_1(int wc)
 	char		*ret;
 
 	ret = (char *)ft_memalloc(2);
-	ret[0] = wc;
+	ret[0] = (char)wc;
 	ret[1] = '\0';
 	return (ret);
 }
@@ -62,7 +62,7 @@ char	*s_wide(wchar_t wide)
 {
 	char		*ret;
 
-	if (wide <= 0x78)
+	if (wide <= 0x7f)
 		ret = s_wide_1(wide);
 	else if (wide <= 0x1fff)
 		ret = s_wide_2(wide);

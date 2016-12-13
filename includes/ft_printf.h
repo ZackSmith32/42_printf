@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 13:22:01 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/11 19:32:52 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void		pop_length(conv_obj *obj, char **sentinel);
 */
 void		pop_con(conv_obj *obj, char **sentinel);
 void		non_func(conv_obj *obj, va_list args);
-void		pop_parse(conv_obj *obj);
+void		pop_parse(conv_obj *obj, char **sentinel);
 int			ft_strc(char *str, char c);
 
 /*
@@ -121,6 +121,9 @@ void		C_func(conv_obj *obj, va_list args);
 */
 void		o_func(conv_obj *obj, va_list args);
 void		O_func(conv_obj *obj, va_list args);
+void		casting(conv_obj *obj, va_list args, int n);
+
+
 
 /*
 **			funx_u

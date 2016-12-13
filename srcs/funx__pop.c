@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 22:29:38 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 11:23:12 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	pop_str(conv_obj *obj, char **str)
 
 void	pop_flags(conv_obj *obj, char **sentinel)
 {
+	// printf("pop_flags: sentinel = %s\n", *sentinel);
 	if (**sentinel == '%')
 		(*sentinel)++;
 	else
@@ -55,6 +56,7 @@ void	pop_flags(conv_obj *obj, char **sentinel)
 			obj->zero = 1;
 		(*sentinel)++;
 	}
+	// printf("pop_flags: out: minus = %c\n", obj->minus);
 }
 
 void	pop_width(conv_obj *obj, char **sentinel)
@@ -63,6 +65,12 @@ void	pop_width(conv_obj *obj, char **sentinel)
 	char	*holder;
 
 	i = 0;
+	if (**sentinel == '*')
+	{
+		obj->w_star = 1;
+		(*sentinel)++;
+		return ;
+	}
 	while (ft_isdigit(sentinel[0][i]))
 		i++;
 	holder = ft_memalloc(i + 1);
@@ -79,6 +87,17 @@ void	pop_width(conv_obj *obj, char **sentinel)
 	obj->width = i;
 }
 
+int		star_check(conv_obj *obj, char **sentinel)
+{	
+	if (**sentinel == '*')
+	{
+		obj->p_star = 1;
+		(*sentinel)++;
+		return (1);
+	}
+	return (0);
+}
+
 void	pop_precision(conv_obj *obj, char **sentinel)
 {
 	int		i;
@@ -87,6 +106,8 @@ void	pop_precision(conv_obj *obj, char **sentinel)
 	if (**sentinel == '.')
 		(*sentinel)++;
 	else
+		return ;
+	if (star_check(obj, sentinel))
 		return ;
 	i = 0;
 	while (ft_isdigit(sentinel[0][i]))

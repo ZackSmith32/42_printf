@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 23:39:40 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 11:22:03 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,24 @@ void	space_flag(conv_obj *obj)
 		return ;
 	if (ft_strchr(obj->str, '-'))
 		return ;
-	new_str = ft_memalloc(ft_strlen(obj->str) + 2);
-	new_str[0] = ' ';
-	ft_strcat(new_str, obj->str);
-	free(obj->str);
-	obj->str = new_str;
+	if (obj->str[0] == '0' || obj->str[0] == ' ')
+		obj->str[0] = ' ';
+	else
+	{
+		new_str = ft_memalloc(ft_strlen(obj->str) + 2);
+		new_str[0] = ' ';
+		ft_strcat(new_str, obj->str);
+		free(obj->str);
+		obj->str = new_str;
+	}
 }
 
 void	star_args(conv_obj *obj, va_list args)
 {
-	if (obj->p_star)
-		obj->prec = va_arg(args, int);
 	if (obj->w_star)
 		obj->width = va_arg(args, int);
+	if (obj->p_star)
+		obj->prec = va_arg(args, int);
 }
 
 int			ft_strc(char *str, char c)
@@ -77,6 +82,8 @@ int		utf_len(wchar_t *wide)
 	int		i;
 	int		j;
 
+	if (!wide)
+		return (0);
 	i = 0;
 	j = 0;
 	while (wide[i] != 0)
