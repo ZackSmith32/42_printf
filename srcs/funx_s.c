@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 19:18:00 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/12 22:50:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void	s_precision(conv_obj *obj, char *s)
 	if (!s)
 		return ;
 	if (obj->prec != -1)
+	{
 		ft_strncpy(obj->str, s, obj->prec);
+		// printf("obj->str = %s\n", obj->str );
+		// obj->str[obj->prec + 1] = '\0';
+	}
 	else
 		ft_strcpy(obj->str, s);
 }

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 19:38:19 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/12 22:32:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 	{
 		pop_flags(obj, sentinel);
 		pop_width(obj, sentinel);
+		// printf("1sent = %s\n", *sentinel);
 		pop_precision(obj, sentinel);
+		// printf("2sent = %s\n", *sentinel);
 		pop_length(obj, sentinel);
+		// printf("3sent = %s\n", *sentinel);
 		pop_con(obj, sentinel);
 		pop_parse(obj, sentinel);
 	}
@@ -31,7 +34,6 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 
 int		mission_control(char **sentinel, va_list args)
 {
-	// return (0);
 	conv_obj	*item;
 	conv_obj	*temp;
 	int			i;
@@ -50,7 +52,12 @@ int		mission_control(char **sentinel, va_list args)
 			temp  = new_conv_obj();
 		pop_obj(temp, sentinel);
 		if (temp->f)
+		{
+			// printf("con typ = %c\n", temp->con_typ);
 			(temp->f)(temp, args);
+		}
+		else if (ft_strchr(temp->str, '*') != NULL)
+			temp->str = ft_strdup("");
 		ft_lstadd_end(item, temp);
 		i++;
 	}

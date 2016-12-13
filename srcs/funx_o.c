@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 21:31:11 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/12 17:47:30 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void		o_func(conv_obj *obj, va_list args)
 	o_hash(obj);
 	if (!((obj->con_typ == 'o' || obj->con_typ == 'O') && obj->prec == 0))
 		d_precision(obj);
+	else if (ft_atoi(obj->str) == 0 && obj->prec == 0 && obj->hash == 0)
+	{
+		obj->str = ft_strdup("");
+		return ;
+	}
 	x_hash(obj);
 	d_width(obj);
 	x_hash_alt(obj);
