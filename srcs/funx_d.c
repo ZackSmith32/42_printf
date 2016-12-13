@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:23:48 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 13:18:51 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	d_width(conv_obj *obj)
 	char	*new_str;
 	char	*holder;
 	int		diff;
-
 	diff = obj->width - ft_strlen(obj->str);
 	if (diff > 0)
 	{

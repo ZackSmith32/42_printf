@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:24:47 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 13:22:29 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,29 @@ void	ret_null(conv_obj *obj)
 	obj->str = a;
 }
 
+void	s_prec_long(conv_obj *obj, char *s)
+{
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	while (i + j <= obj->prec)
+	{
+		i += j;
+		j = 0;
+		if ((unsigned char)s[i] <= 0x7f)
+			j = 1;
+		else if ((unsigned char)s[i] <= 0xdf)
+			j = 2;
+		else if ((unsigned char)s[i] <= 0xef)
+			j = 3;
+		else
+			j = 4;
+	}
+	ft_strncpy(obj->str, s, i);
+}
+
 void	s_precision(conv_obj *obj, char *s)
 {
 	int		i;
@@ -27,17 +50,12 @@ void	s_precision(conv_obj *obj, char *s)
 	i = 0;
 	if (!s)
 		return ;
-	if (obj->prec != -1)
-	{
-		obj->str = (char *)ft_memalloc(obj->prec + 1);
+	if (ft_strcmp(obj->len_f, "l") == 0 && obj->con_typ == 'S' && obj->prec != -1)
+		s_prec_long(obj, s);
+	else if (obj->prec != -1)
 		ft_strncpy(obj->str, s, obj->prec);
-		obj->str[obj->prec + 1] = '\0';
-	}
 	else
-	{
-		obj->str = (char *)ft_memalloc(ft_strlen(s) + 1);
 		ft_strcpy(obj->str, s);
-	}
 }
 
 void	s_func(conv_obj *obj, va_list args)
@@ -63,6 +81,7 @@ void	s_func(conv_obj *obj, va_list args)
 		if (s == NULL && obj->width == 0)
 			return (ret_null(obj));
 	}
+	obj->str = (char *)ft_memalloc(ft_strlen(s) + 1);
 	s_precision(obj, s);
 	if (!ft_strcmp(obj->len_f, "l"))
 		free(s);
