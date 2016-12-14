@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 23:19:54 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/14 12:07:25 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ extern char *g_flag_length;
 */
 int					pop_obj(t_conv_obj *obj, char **sentinel);
 int					mission_control(char **sentinel, va_list args);
-int					ft_printf(char *sentinel, ...);
+int					ft_printf(char *sentinel, ...)
+					__attribute__((format(scanf,1,2)));
 
 /*
 **		funx__help
