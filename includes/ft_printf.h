@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/14 12:07:25 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/14 12:14:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,12 @@ extern char *g_flag_length;
 */
 int					pop_obj(t_conv_obj *obj, char **sentinel);
 int					mission_control(char **sentinel, va_list args);
-int					ft_printf(char *sentinel, ...)
-					__attribute__((format(scanf,1,2)));
+int					ft_printf(char *sentinel, ...);
 
 /*
 **		funx__help
 */
 char				*ft_itoa3(long long nbr);
-// char				*ft_itoa_base(unsigned long long n, int base);
 
 /*
 **		funx__flag
@@ -148,6 +146,5 @@ void				x_func(t_conv_obj *obj, va_list args);
 void				big_x_func(t_conv_obj *obj, va_list args);
 void				x_hash(t_conv_obj *obj);
 void				x_hash_alt(t_conv_obj *obj);
-
 
 #endif
