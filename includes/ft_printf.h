@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 18:26:28 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:31:47 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,21 @@ extern char *g_flag_norm;
 extern char *g_flag_length;
 
 /*
-**					ft_printf
+**		ft_printf
 */
 int					pop_obj(t_conv_obj *obj, char **sentinel);
 int					mission_control(char **sentinel, va_list args);
 int					ft_printf(char *sentinel, ...);
 
 /*
-**			funx__list
+**		funx__list
 */
 void				ft_lstadd_end(t_conv_obj *temp, t_conv_obj *new);
 int					ft_putobj(t_conv_obj *t);
 t_conv_obj			*new_conv_obj(void);
 
 /*
-**					funx__pop
+**		funx__pop
 */
 void				pop_str(t_conv_obj *obj, char **str);
 void				pop_flags(t_conv_obj *obj, char **sentinel);
@@ -72,7 +72,7 @@ void				pop_precision(t_conv_obj *obj, char **sentinel);
 void				pop_length(t_conv_obj *obj, char **sentinel);
 
 /*
-** 			funx__pop2
+** 		funx__pop2
 */
 void				pop_con(t_conv_obj *obj, char **sentinel);
 void				non_func(t_conv_obj *obj, va_list args);
@@ -81,26 +81,26 @@ int					ft_strc(char *str, char c);
 int					star_check(t_conv_obj *obj, char **sentinel);
 
 /*
-**			funx__help
+**		funx__help
 */
 char				*ft_itoa3(long long nbr);
 char				*ft_itoa_base(unsigned long long n, int base);
 int					utf_len(wchar_t *wide);
 
 /*
-**			funx__flag
+**		funx__flag
 */
 void				plus_func(t_conv_obj *obj);
 void				space_flag(t_conv_obj *obj);
 void				star_args(t_conv_obj *obj, va_list args);
 
 /*
-**			funx__wide
+**		funx__wide
 */
 char				*s_wide(wchar_t wide);
 
 /*
-**			funx_d
+**		funx_d
 */
 void				big_d_func(t_conv_obj *obj, va_list args);
 void				d_func(t_conv_obj *obj, va_list args);
@@ -109,7 +109,7 @@ void				d_precision(t_conv_obj *obj);
 void				d_width_zero(t_conv_obj *obj);
 
 /*
-**			funx_s
+**		funx_s
 */
 void				s_func(t_conv_obj *obj, va_list args);
 void				big_s_func(t_conv_obj *obj, va_list args);
@@ -117,20 +117,20 @@ void				c_func(t_conv_obj *obj, va_list args);
 void				big_c_func(t_conv_obj *obj, va_list args);
 
 /*
-**			funx_o
+**		funx_o
 */
 void				o_func(t_conv_obj *obj, va_list args);
 void				big_o_func(t_conv_obj *obj, va_list args);
 void				casting(t_conv_obj *obj, va_list args, int n);
 
 /*
-**			funx_u
+**		funx_u
 */
 void				u_func(t_conv_obj *obj, va_list args);
 void				big_u_func(t_conv_obj *obj, va_list args);
 
 /*
-**			funx_x
+**		funx_x
 */
 void				x_func(t_conv_obj *obj, va_list args);
 void				big_x_func(t_conv_obj *obj, va_list args);
@@ -138,7 +138,7 @@ void				x_hash(t_conv_obj *obj);
 void				x_hash_alt(t_conv_obj *obj);
 
 /*
-**			funx_pi
+**		funx_pi
 */
 void				p_func(t_conv_obj *obj, va_list args);
 void				i_func(t_conv_obj *obj, va_list args);
