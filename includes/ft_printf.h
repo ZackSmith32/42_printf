@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 22:37:08 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 23:19:54 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct		s_z_list
 	void			(*f)(struct s_a_list *obj, va_list args);
 }					t_f_list;
 
-extern t_f_list		g_func_arr[15];
+extern t_f_list		g_func_arr[16];
 extern char *g_flag_norm;
 extern char *g_flag_length;
 
@@ -97,6 +97,11 @@ int					star_check(t_conv_obj *obj, char **sentinel);
 **		funx__wide
 */
 char				*s_wide(wchar_t wide);
+
+/*
+**		funx_b
+*/
+void				b_func(t_conv_obj *obj, va_list args);
 
 /*
 **		funx_d

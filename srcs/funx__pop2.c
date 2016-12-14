@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 20:43:47 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 23:18:46 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	pop_length(t_conv_obj *obj, char **sentinel)
 void	pop_con(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
+	int		num_funcs;
 
 	i = 0;
-	while (i < 15)
+	num_funcs = 16;
+	while (i < num_funcs)
 	{
 		if (g_func_arr[i].f_nm == **sentinel)
 		{
@@ -52,10 +54,10 @@ void	pop_con(t_conv_obj *obj, char **sentinel)
 		}
 		i++;
 	}
-	if (i == 15 && sentinel[0][0] != '\0')
+	if (i == num_funcs && sentinel[0][0] != '\0')
 	{
 		obj->con_typ = **sentinel;
-		obj->f = g_func_arr[14].f;
+		obj->f = g_func_arr[num_funcs - 1].f;
 		(*sentinel)++;
 	}
 }

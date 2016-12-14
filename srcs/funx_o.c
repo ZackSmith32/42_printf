@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 18:54:39 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 23:51:07 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void			o_func(t_conv_obj *obj, va_list args)
 	star_args(obj, args);
 	if (obj->con_typ == 'o' || obj->con_typ == 'O')
 		n = 8;
-	else
+	else if (obj->con_typ == 'x' || obj->con_typ == 'X')
 		n = 16;
+	else
+		n = 2;
 	casting(obj, args, n);
 	if (ft_strlen(obj->str) == 0)
 		return ;

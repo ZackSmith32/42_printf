@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 21:23:24 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/14 00:11:10 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,3 @@ void			pop_precision(t_conv_obj *obj, char **sentinel)
 	free(holder);
 	obj->prec = i;
 }
-

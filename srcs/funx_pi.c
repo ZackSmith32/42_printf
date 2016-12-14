@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 20:37:55 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/14 00:11:25 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void		p_func(t_conv_obj *obj, va_list args)
 
 	free(obj->str);
 	star_args(obj, args);
-	// printf("width = %d\n", obj->width);
 	ptr = va_arg(args, void *);
 	obj->str = ft_itoa_base((unsigned long long)ptr, 16);
 	if (obj->prec == 0 && ft_strcmp(obj->str, "0") == 0)

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 22:24:58 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 23:54:18 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		mission_control(char **sentinel, va_list args)
 int		ft_printf(char *sentinel, ...)
 {
 	va_list args;
-	ft_putstr("hello world\n");
+
 	va_start(args, sentinel);
 	return (mission_control(&sentinel, args));
 	va_end(args);
