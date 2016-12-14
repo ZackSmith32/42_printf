@@ -6,20 +6,20 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:04:14 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:47:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	big_d_func(conv_obj *obj, va_list args)
+void	big_d_func(t_conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	d_func(obj, args);
 	return ;
 }
 
-void	d_func(conv_obj *obj, va_list args)
+void	d_func(t_conv_obj *obj, va_list args)
 {
 	star_args(obj, args);
 	free(obj->str);
@@ -42,7 +42,7 @@ void	d_func(conv_obj *obj, va_list args)
 	return ;
 }
 
-void	d_precision(conv_obj *obj)
+void	d_precision(t_conv_obj *obj)
 {
 	char	*new_str;
 	char	*holder;
@@ -68,7 +68,7 @@ void	d_precision(conv_obj *obj)
 	d_width_zero(obj);
 }
 
-void	d_width(conv_obj *obj)
+void	d_width(t_conv_obj *obj)
 {
 	char	*new_str;
 	char	*holder;
@@ -92,7 +92,7 @@ void	d_width(conv_obj *obj)
 	}
 }
 
-void	d_width_zero(conv_obj *obj)
+void	d_width_zero(t_conv_obj *obj)
 {
 	int		i;
 

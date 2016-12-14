@@ -6,26 +6,26 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 16:50:34 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:46:17 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-conv_obj	*new_conv_obj(void)
+t_conv_obj	*new_conv_obj(void)
 {
-	conv_obj	*newnew;
+	t_conv_obj	*newnew;
 
-	newnew = (conv_obj *)ft_memalloc(sizeof(conv_obj));
+	newnew = (t_conv_obj *)ft_memalloc(sizeof(t_conv_obj));
 	newnew->len_f = (char *)ft_memalloc(2);
 	newnew->prec = -1;
 	newnew->str = ft_strdup("*");
 	return (newnew);
 }
 
-void		ft_lstadd_end(conv_obj *start, conv_obj *new)
+void		ft_lstadd_end(t_conv_obj *start, t_conv_obj *new)
 {
-	conv_obj	*holder;
+	t_conv_obj	*holder;
 
 	if (start == new)
 		return ;
@@ -35,10 +35,10 @@ void		ft_lstadd_end(conv_obj *start, conv_obj *new)
 	holder->next = new;
 }
 
-int			ft_putobj(conv_obj *t)
+int			ft_putobj(t_conv_obj *t)
 {
 	int			j;
-	conv_obj	*k;
+	t_conv_obj	*k;
 
 	j = 0;
 	while (t)

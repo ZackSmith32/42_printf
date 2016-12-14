@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 16:56:26 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:46:47 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	pop_con(conv_obj *obj, char **sentinel)
+void	pop_con(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
 
@@ -36,7 +36,7 @@ void	pop_con(conv_obj *obj, char **sentinel)
 	}
 }
 
-void	pop_parse(conv_obj *obj, char **sentinel)
+void	pop_parse(t_conv_obj *obj, char **sentinel)
 {
 	char	*hack;
 
@@ -56,7 +56,7 @@ void	pop_parse(conv_obj *obj, char **sentinel)
 	free(hack);
 }
 
-int		star_check(conv_obj *obj, char **sentinel)
+int		star_check(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '*')
 	{

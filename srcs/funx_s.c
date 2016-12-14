@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:12:04 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:48:01 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ret_null(conv_obj *obj)
+void	ret_null(t_conv_obj *obj)
 {
 	char	*a;
 
@@ -20,7 +20,7 @@ void	ret_null(conv_obj *obj)
 	obj->str = a;
 }
 
-void	s_prec_long(conv_obj *obj, char *s)
+void	s_prec_long(t_conv_obj *obj, char *s)
 {
 	int		i;
 	int		j;
@@ -43,7 +43,7 @@ void	s_prec_long(conv_obj *obj, char *s)
 	ft_strncpy(obj->str, s, i);
 }
 
-void	s_precision(conv_obj *obj, char *s)
+void	s_precision(t_conv_obj *obj, char *s)
 {
 	int		i;
 
@@ -59,7 +59,7 @@ void	s_precision(conv_obj *obj, char *s)
 		ft_strcpy(obj->str, s);
 }
 
-void	s_func(conv_obj *obj, va_list args)
+void	s_func(t_conv_obj *obj, va_list args)
 {
 	char	*s;
 	int		i;
@@ -94,7 +94,7 @@ void	s_func(conv_obj *obj, va_list args)
 	d_width(obj);
 }
 
-void	big_s_func(conv_obj *obj, va_list args)
+void	big_s_func(t_conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	s_func(obj, args);

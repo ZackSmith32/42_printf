@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:27:51 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:46:35 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	pop_str(conv_obj *obj, char **str)
+void	pop_str(t_conv_obj *obj, char **str)
 {
 	int		i;
 	int		j;
@@ -35,7 +35,7 @@ void	pop_str(conv_obj *obj, char **str)
 	obj->con_typ = 't';
 }
 
-void	pop_flags(conv_obj *obj, char **sentinel)
+void	pop_flags(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '%')
 		(*sentinel)++;
@@ -57,7 +57,7 @@ void	pop_flags(conv_obj *obj, char **sentinel)
 	}
 }
 
-void	pop_width(conv_obj *obj, char **sentinel)
+void	pop_width(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
 	char	*holder;
@@ -85,7 +85,7 @@ void	pop_width(conv_obj *obj, char **sentinel)
 	obj->width = i;
 }
 
-void	pop_precision(conv_obj *obj, char **sentinel)
+void	pop_precision(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
 	char	*holder;
@@ -113,7 +113,7 @@ void	pop_precision(conv_obj *obj, char **sentinel)
 	obj->prec = i;
 }
 
-void	pop_length(conv_obj *obj, char **sentinel)
+void	pop_length(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == 'h' && (*sentinel)[1] == 'h')
 	{

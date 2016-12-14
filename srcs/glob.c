@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:07:13 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:23:31 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char *g_flag_norm = "-+# 0";
 char *g_flag_length = "hljz";
 
-f_list g_func_arr[] = {
+t_f_list g_func_arr[] = {
 	{'s', &s_func},
 	{'S', &big_s_func},
 	{'p', &p_func},

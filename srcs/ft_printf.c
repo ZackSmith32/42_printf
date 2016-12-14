@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 16:46:14 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:43:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		pop_obj(conv_obj *obj, char **sentinel)
+int		pop_obj(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '%')
 	{
@@ -30,8 +30,8 @@ int		pop_obj(conv_obj *obj, char **sentinel)
 
 int		mission_control(char **sentinel, va_list args)
 {
-	conv_obj	*item;
-	conv_obj	*temp;
+	t_conv_obj	*item;
+	t_conv_obj	*temp;
 	int			i;
 
 	temp = new_conv_obj();

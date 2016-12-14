@@ -6,21 +6,20 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:23:49 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 18:26:28 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdlib.h>	// malloc
-#include <unistd.h>	// write
-#include <stdarg.h> // va_list
-#include <stdint.h> // intmax_t
-#include <wchar.h>	// wint_t
-#include "libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+# include <wchar.h>
+# include "libft/libft.h"
 
-typedef struct	a_list
+typedef struct		s_a_list
 {
 	int				minus;
 	int				plus;
@@ -34,118 +33,115 @@ typedef struct	a_list
 	int				p_star;
 	char			con_typ;
 	int				extra;
-	void			(*f)(struct a_list *obj, va_list args);
+	void			(*f)(struct s_a_list *obj, va_list args);
 	char			*str;
-	struct a_list	*next;
-}					conv_obj;
+	struct s_a_list	*next;
+}					t_conv_obj;
 
-typedef struct		z_list
+typedef struct		s_z_list
 {
 	char			f_nm;
-	void			(*f)(struct a_list *obj, va_list args);
-}					f_list;
+	void			(*f)(struct s_a_list *obj, va_list args);
+}					t_f_list;
 
-extern f_list		g_func_arr[15];
-extern char 		*g_flag_norm;
-extern char 		*g_flag_length;
+extern t_f_list		g_func_arr[15];
+extern char *g_flag_norm;
+extern char *g_flag_length;
 
 /*
-**			ft_printf
+**					ft_printf
 */
-int			pop_obj(conv_obj *obj, char **sentinel);
-int			mission_control(char **sentinel, va_list args);
-int			ft_printf(char *sentinel, ...);
+int					pop_obj(t_conv_obj *obj, char **sentinel);
+int					mission_control(char **sentinel, va_list args);
+int					ft_printf(char *sentinel, ...);
 
 /*
 **			funx__list
 */
-void		ft_lstadd_end(conv_obj *temp, conv_obj *new);
-int			ft_putobj(conv_obj *t);
-conv_obj	*new_conv_obj(void);
+void				ft_lstadd_end(t_conv_obj *temp, t_conv_obj *new);
+int					ft_putobj(t_conv_obj *t);
+t_conv_obj			*new_conv_obj(void);
 
 /*
-**			funx__pop
+**					funx__pop
 */
-void		pop_str(conv_obj *obj, char **str);
-void		pop_flags(conv_obj *obj, char **sentinel);
-void		pop_width(conv_obj *obj, char **sentinel);
-void		pop_precision(conv_obj *obj, char **sentinel);
-void		pop_length(conv_obj *obj, char **sentinel);
+void				pop_str(t_conv_obj *obj, char **str);
+void				pop_flags(t_conv_obj *obj, char **sentinel);
+void				pop_width(t_conv_obj *obj, char **sentinel);
+void				pop_precision(t_conv_obj *obj, char **sentinel);
+void				pop_length(t_conv_obj *obj, char **sentinel);
 
 /*
 ** 			funx__pop2
 */
-void		pop_con(conv_obj *obj, char **sentinel);
-void		non_func(conv_obj *obj, va_list args);
-void		pop_parse(conv_obj *obj, char **sentinel);
-int			ft_strc(char *str, char c);
-int			star_check(conv_obj *obj, char **sentinel);
-
+void				pop_con(t_conv_obj *obj, char **sentinel);
+void				non_func(t_conv_obj *obj, va_list args);
+void				pop_parse(t_conv_obj *obj, char **sentinel);
+int					ft_strc(char *str, char c);
+int					star_check(t_conv_obj *obj, char **sentinel);
 
 /*
 **			funx__help
 */
-char		*ft_itoa3(long long nbr);
-char		*ft_itoa_base(unsigned long long n, int base);
-int			utf_len(wchar_t *wide);
+char				*ft_itoa3(long long nbr);
+char				*ft_itoa_base(unsigned long long n, int base);
+int					utf_len(wchar_t *wide);
 
 /*
 **			funx__flag
 */
-void		plus_func(conv_obj *obj);
-void		space_flag(conv_obj *obj);	
-void		star_args(conv_obj *obj, va_list args);
+void				plus_func(t_conv_obj *obj);
+void				space_flag(t_conv_obj *obj);
+void				star_args(t_conv_obj *obj, va_list args);
 
 /*
 **			funx__wide
 */
-char		*s_wide(wchar_t wide);
+char				*s_wide(wchar_t wide);
 
 /*
 **			funx_d
 */
-void		big_d_func(conv_obj *obj, va_list args);
-void		d_func(conv_obj *obj, va_list args);
-void		d_width(conv_obj *obj);
-void		d_precision(conv_obj *obj);
-void		d_width_zero(conv_obj *obj);
+void				big_d_func(t_conv_obj *obj, va_list args);
+void				d_func(t_conv_obj *obj, va_list args);
+void				d_width(t_conv_obj *obj);
+void				d_precision(t_conv_obj *obj);
+void				d_width_zero(t_conv_obj *obj);
 
 /*
 **			funx_s
 */
-void		s_func(conv_obj *obj, va_list args);
-void		big_s_func(conv_obj *obj, va_list args);
-void		c_func(conv_obj *obj, va_list args);
-void		big_c_func(conv_obj *obj, va_list args);
+void				s_func(t_conv_obj *obj, va_list args);
+void				big_s_func(t_conv_obj *obj, va_list args);
+void				c_func(t_conv_obj *obj, va_list args);
+void				big_c_func(t_conv_obj *obj, va_list args);
 
 /*
 **			funx_o
 */
-void		o_func(conv_obj *obj, va_list args);
-void		big_o_func(conv_obj *obj, va_list args);
-void		casting(conv_obj *obj, va_list args, int n);
-
-
+void				o_func(t_conv_obj *obj, va_list args);
+void				big_o_func(t_conv_obj *obj, va_list args);
+void				casting(t_conv_obj *obj, va_list args, int n);
 
 /*
 **			funx_u
 */
-void		u_func(conv_obj *obj, va_list args);
-void		big_u_func(conv_obj *obj, va_list args);
+void				u_func(t_conv_obj *obj, va_list args);
+void				big_u_func(t_conv_obj *obj, va_list args);
 
 /*
 **			funx_x
 */
-void		x_func(conv_obj *obj, va_list args);
-void		big_x_func(conv_obj *obj, va_list args);
-void		x_hash(conv_obj *obj);
-void		x_hash_alt(conv_obj *obj);
+void				x_func(t_conv_obj *obj, va_list args);
+void				big_x_func(t_conv_obj *obj, va_list args);
+void				x_hash(t_conv_obj *obj);
+void				x_hash_alt(t_conv_obj *obj);
 
 /*
 **			funx_pi
 */
-void		p_func(conv_obj *obj, va_list args);
-void		i_func(conv_obj *obj, va_list args);
-void		non_func(conv_obj *obj, va_list args);
+void				p_func(t_conv_obj *obj, va_list args);
+void				i_func(t_conv_obj *obj, va_list args);
+void				non_func(t_conv_obj *obj, va_list args);
 
 #endif

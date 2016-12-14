@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:10:51 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:47:49 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		p_precision(conv_obj *obj)
+void		p_precision(t_conv_obj *obj)
 {
 	char	*holder;
 	int		sz;
@@ -31,7 +31,7 @@ void		p_precision(conv_obj *obj)
 	obj->str = holder;
 }
 
-void		p_width(conv_obj *obj)
+void		p_width(t_conv_obj *obj)
 {
 	char	*s;
 
@@ -58,7 +58,7 @@ void		p_width(conv_obj *obj)
 	obj->str = s;
 }
 
-void		p_func(conv_obj *obj, va_list args)
+void		p_func(t_conv_obj *obj, va_list args)
 {
 	void	*ptr;
 
@@ -75,13 +75,13 @@ void		p_func(conv_obj *obj, va_list args)
 	p_width(obj);
 }
 
-void		i_func(conv_obj *obj, va_list args)
+void		i_func(t_conv_obj *obj, va_list args)
 {
 	d_func(obj, args);
 	return ;
 }
 
-void		non_func(conv_obj *obj, va_list args)
+void		non_func(t_conv_obj *obj, va_list args)
 {
 	if (obj->w_star)
 		obj->width = va_arg(args, int);

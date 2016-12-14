@@ -6,18 +6,18 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:14:33 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:48:19 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	x_func(conv_obj *obj, va_list args)
+void	x_func(t_conv_obj *obj, va_list args)
 {
 	o_func(obj, args);
 }
 
-void	big_x_func(conv_obj *obj, va_list args)
+void	big_x_func(t_conv_obj *obj, va_list args)
 {
 	int		i;
 
@@ -31,7 +31,7 @@ void	big_x_func(conv_obj *obj, va_list args)
 	return ;
 }
 
-void	x_hash(conv_obj *obj)
+void	x_hash(t_conv_obj *obj)
 {
 	char	*new;
 
@@ -48,7 +48,7 @@ void	x_hash(conv_obj *obj)
 	obj->str = new;
 }
 
-void	x_hash_alt(conv_obj *obj)
+void	x_hash_alt(t_conv_obj *obj)
 {
 	int		i;
 	char	*new;

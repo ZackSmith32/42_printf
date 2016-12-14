@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:08:30 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:47:39 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	o_hash(conv_obj *obj)
+static void	o_hash(t_conv_obj *obj)
 {
 	char	*new;
 
@@ -26,7 +26,7 @@ static void	o_hash(conv_obj *obj)
 	obj->str = new;
 }
 
-void		o_func(conv_obj *obj, va_list args)
+void		o_func(t_conv_obj *obj, va_list args)
 {
 	int		n;
 
@@ -49,14 +49,14 @@ void		o_func(conv_obj *obj, va_list args)
 	x_hash_alt(obj);
 }
 
-void		big_o_func(conv_obj *obj, va_list args)
+void		big_o_func(t_conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	o_func(obj, args);
 	return ;
 }
 
-void	casting(conv_obj *obj, va_list args, int n)
+void	casting(t_conv_obj *obj, va_list args, int n)
 {
 	if (!ft_strcmp(obj->len_f, "l"))
 		obj->str = 

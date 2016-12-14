@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 16:49:02 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:44:54 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	plus_func(conv_obj *obj)
+void	plus_func(t_conv_obj *obj)
 {
 	char	*new_str;
 	char	a;
@@ -32,7 +32,7 @@ void	plus_func(conv_obj *obj)
 	obj->str = new_str;
 }
 
-void	space_flag(conv_obj *obj)
+void	space_flag(t_conv_obj *obj)
 {
 	char	*new_str;
 
@@ -52,7 +52,7 @@ void	space_flag(conv_obj *obj)
 	}
 }
 
-void	star_args(conv_obj *obj, va_list args)
+void	star_args(t_conv_obj *obj, va_list args)
 {
 	if (obj->w_star)
 		obj->width = va_arg(args, int);
