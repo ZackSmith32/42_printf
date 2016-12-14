@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:46:35 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 20:39:53 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	pop_str(t_conv_obj *obj, char **str)
+void			pop_str(t_conv_obj *obj, char **str)
 {
 	int		i;
 	int		j;
@@ -35,7 +35,7 @@ void	pop_str(t_conv_obj *obj, char **str)
 	obj->con_typ = 't';
 }
 
-void	pop_flags(t_conv_obj *obj, char **sentinel)
+void			pop_flags(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '%')
 		(*sentinel)++;
@@ -57,18 +57,25 @@ void	pop_flags(t_conv_obj *obj, char **sentinel)
 	}
 }
 
-void	pop_width(t_conv_obj *obj, char **sentinel)
+static int		pop_width2(t_conv_obj *obj, char **sentinel)
+{
+	if (**sentinel == '*')
+	{
+		obj->w_star = 1;
+		(*sentinel)++;
+		return (1);
+	}
+	return (0);
+}
+
+void			pop_width(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
 	char	*holder;
 
 	i = 0;
-	if (**sentinel == '*')
-	{
-		obj->w_star = 1;
-		(*sentinel)++;
+	if (pop_width2(obj, sentinel))
 		return ;
-	}
 	while (ft_isdigit(sentinel[0][i]))
 		i++;
 	holder = ft_memalloc(i + 1);
@@ -83,9 +90,10 @@ void	pop_width(t_conv_obj *obj, char **sentinel)
 	i = ft_atoi(holder);
 	free(holder);
 	obj->width = i;
+	pop_width2(obj, sentinel);
 }
 
-void	pop_precision(t_conv_obj *obj, char **sentinel)
+void			pop_precision(t_conv_obj *obj, char **sentinel)
 {
 	int		i;
 	char	*holder;
@@ -113,26 +121,3 @@ void	pop_precision(t_conv_obj *obj, char **sentinel)
 	obj->prec = i;
 }
 
-void	pop_length(t_conv_obj *obj, char **sentinel)
-{
-	if (**sentinel == 'h' && (*sentinel)[1] == 'h')
-	{
-		ft_strcpy(obj->len_f, "hh");
-		(*sentinel)++;
-	}
-	else if (**sentinel == 'h')
-		ft_strcpy(obj->len_f, "h");
-	if (**sentinel == 'l' && (*sentinel)[1] == 'l')
-	{
-		ft_strcpy(obj->len_f, "ll");
-		(*sentinel)++;
-	}
-	else if (**sentinel == 'l')
-		ft_strcpy(obj->len_f, "l");
-	if (**sentinel == 'j')
-		ft_strcpy(obj->len_f, "j");
-	if (**sentinel == 'z')
-		ft_strcpy(obj->len_f, "z");
-	if (ft_strc(g_flag_length, **sentinel))
-		(*sentinel)++;
-}

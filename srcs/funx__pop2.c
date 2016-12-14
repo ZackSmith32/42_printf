@@ -6,11 +6,35 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:46:47 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 20:43:47 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void	pop_length(t_conv_obj *obj, char **sentinel)
+{
+	if (**sentinel == 'h' && (*sentinel)[1] == 'h')
+	{
+		ft_strcpy(obj->len_f, "hh");
+		(*sentinel)++;
+	}
+	else if (**sentinel == 'h')
+		ft_strcpy(obj->len_f, "h");
+	if (**sentinel == 'l' && (*sentinel)[1] == 'l')
+	{
+		ft_strcpy(obj->len_f, "ll");
+		(*sentinel)++;
+	}
+	else if (**sentinel == 'l')
+		ft_strcpy(obj->len_f, "l");
+	if (**sentinel == 'j')
+		ft_strcpy(obj->len_f, "j");
+	if (**sentinel == 'z')
+		ft_strcpy(obj->len_f, "z");
+	if (ft_strc(g_flag_length, **sentinel))
+		(*sentinel)++;
+}
 
 void	pop_con(t_conv_obj *obj, char **sentinel)
 {

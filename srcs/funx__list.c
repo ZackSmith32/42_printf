@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 17:46:17 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 19:51:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,14 @@ int			ft_putobj(t_conv_obj *t)
 	j = 0;
 	while (t)
 	{
+		if (t->extra == 1 && t->minus == 1)
+		{
+			ft_putchar('\0');
+			j++;
+		}
 		ft_putstr(t->str);
 		j += ft_strlen(t->str);
-		if (t->extra == 1)
+		if (t->extra == 1 && t->minus == 0)
 		{
 			ft_putchar('\0');
 			j++;
