@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 20:43:41 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 22:37:08 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <wchar.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct		s_a_list
 {
@@ -59,7 +59,7 @@ int					ft_printf(char *sentinel, ...);
 **		funx__help
 */
 char				*ft_itoa3(long long nbr);
-char				*ft_itoa_base(unsigned long long n, int base);
+// char				*ft_itoa_base(unsigned long long n, int base);
 
 /*
 **		funx__flag

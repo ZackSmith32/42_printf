@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 20:39:53 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 21:23:24 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static int		pop_width2(t_conv_obj *obj, char **sentinel)
 	if (**sentinel == '*')
 	{
 		obj->w_star = 1;
+		obj->width = 0;
 		(*sentinel)++;
 		return (1);
 	}
@@ -74,8 +75,7 @@ void			pop_width(t_conv_obj *obj, char **sentinel)
 	char	*holder;
 
 	i = 0;
-	if (pop_width2(obj, sentinel))
-		return ;
+	pop_width2(obj, sentinel);
 	while (ft_isdigit(sentinel[0][i]))
 		i++;
 	holder = ft_memalloc(i + 1);

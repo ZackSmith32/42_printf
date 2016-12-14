@@ -6,7 +6,7 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/22 16:32:25 by zsmith            #+#    #+#              #
-#    Updated: 2016/12/13 13:27:30 by zsmith           ###   ########.fr        #
+#    Updated: 2016/12/13 23:05:46 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,17 +37,17 @@ OFILES	=	$(CFILES:.c=.o)
 all: $(NAME)
 
 $(NAME): comp_printf
-	@ libtool -static -o $@ libfunc.a ./includes/libft.a
+	 libtool -static -o $@ libfunc.a ./includes/libft.a
 
 comp_printf:
-	@ gcc $(FLAGS) $(addprefix $(SRCDIR),$(CFILES))
-	@ ar rc libfunc.a $(OFILES)
+	 gcc $(FLAGS) $(addprefix $(SRCDIR),$(CFILES))
+	 ar rc libfunc.a $(OFILES)
 
 clean:
-	@ /bin/rm -f $(OFILES)
+	 /bin/rm -f $(OFILES)
 
 fclean: clean
-	@ /bin/rm -f $(NAME)
-	@ /bin/rm -f libfunc.a
+	 /bin/rm -f $(NAME)
+	 /bin/rm -f libfunc.a
 
 re: fclean all
