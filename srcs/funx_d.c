@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/26 16:36:17 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:09:24 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:04:14 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	D_func(conv_obj *obj, va_list args)
+void	big_d_func(conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	d_func(obj, args);
@@ -22,7 +22,6 @@ void	D_func(conv_obj *obj, va_list args)
 void	d_func(conv_obj *obj, va_list args)
 {
 	star_args(obj, args);
-	// printf("prec/* = %d/%d, width/* = %d/%d\n", obj->prec, obj->p_star, obj->width, obj->w_star);
 	free(obj->str);
 	if (!ft_strlen(obj->len_f))
 		obj->str = ft_itoa3((int)va_arg(args, int));
@@ -74,11 +73,11 @@ void	d_width(conv_obj *obj)
 	char	*new_str;
 	char	*holder;
 	int		diff;
+
 	diff = obj->width - ft_strlen(obj->str);
 	if (diff > 0)
 	{
 		new_str = (char *)ft_memalloc(obj->width + 1);
-		printf("d_width: %p\n", new_str);
 		ft_memset(new_str, obj->zero == 1 ? 48 : 32, (size_t)(obj->width));
 		if (!obj->minus)
 			holder = new_str + diff;

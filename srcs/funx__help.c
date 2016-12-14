@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 10:15:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:22:17 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:49:58 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,12 @@ char						*ft_itoa3(long long nbr)
 	return (ans);
 }
 
-char		*ft_itoa_base(unsigned long long n, int base)
+char						*ft_itoa_base(unsigned long long n, int base)
 {
 	int		i;
-	char 	lst[17];
+	char	lst[17];
 	char	*str;
 
-	// printf("itoa num = %llu\n", n);
 	ft_strcpy(lst, "0123456789abcdef");
 	i = ft_numlen_base(n, base);
 	str = (char *)ft_memalloc(sizeof(char) * i + 1);
@@ -86,6 +85,5 @@ char		*ft_itoa_base(unsigned long long n, int base)
 		str[--i] = lst[n % base];
 		n = n / base;
 	}
-	// printf("itoa str = %s\n", str);
 	return (str);
 }

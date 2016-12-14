@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:22:52 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:50:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ conv_obj	*new_conv_obj(void)
 	newnew->len_f = (char *)ft_memalloc(2);
 	newnew->prec = -1;
 	newnew->str = ft_strdup("*");
-	// printf("addy= %p\n", (newnew->str));
 	return (newnew);
 }
 
@@ -36,7 +35,7 @@ void		ft_lstadd_end(conv_obj *start, conv_obj *new)
 	holder->next = new;
 }
 
-int		ft_putobj(conv_obj *t)
+int			ft_putobj(conv_obj *t)
 {
 	int			j;
 	conv_obj	*k;
@@ -44,9 +43,7 @@ int		ft_putobj(conv_obj *t)
 	j = 0;
 	while (t)
 	{
-		// ft_putstr("\n\n");
 		ft_putstr(t->str);
-		// ft_putstr("\n\n");
 		j += ft_strlen(t->str);
 		if (t->extra == 1)
 		{

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:52:00 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 13:18:45 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:08:30 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		o_func(conv_obj *obj, va_list args)
 	x_hash_alt(obj);
 }
 
-void		O_func(conv_obj *obj, va_list args)
+void		big_o_func(conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	o_func(obj, args);

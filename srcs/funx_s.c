@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 14:52:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:24:38 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:12:04 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	s_precision(conv_obj *obj, char *s)
 	i = 0;
 	if (!s)
 		return ;
-	if (ft_strcmp(obj->len_f, "l") == 0 && obj->con_typ == 'S' && obj->prec != -1)
+	if (ft_strcmp(obj->len_f, "l") == 0 &&
+		obj->con_typ == 'S' && obj->prec != -1)
 		s_prec_long(obj, s);
 	else if (obj->prec != -1)
 		ft_strncpy(obj->str, s, obj->prec);
@@ -80,7 +81,7 @@ void	s_func(conv_obj *obj, va_list args)
 			free(test);
 		}
 	}
-	else 
+	else
 	{
 		s = va_arg(args, char *);
 		if (s == NULL && obj->width == 0)
@@ -93,54 +94,9 @@ void	s_func(conv_obj *obj, va_list args)
 	d_width(obj);
 }
 
-void	S_func(conv_obj *obj, va_list args)
+void	big_s_func(conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	s_func(obj, args);
 	return ;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

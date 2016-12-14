@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:18:47 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:56:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ void	pop_con(conv_obj *obj, char **sentinel)
 void	pop_parse(conv_obj *obj, char **sentinel)
 {
 	char	*hack;
+
 	hack = ft_strdup("dDxXiuUpsSoO");
 	if (obj->minus == 1)
 		obj->zero = 0;
 	if (obj->plus == 1)
 		obj->space = 0;
 	(*sentinel)--;
-	if (obj->prec != -1 && !(obj->con_typ == 'c' 
+	if (obj->prec != -1 && !(obj->con_typ == 'c'
 		|| obj->con_typ == 'C' || obj->con_typ == 's' || obj->con_typ == 'S'
 		|| obj->con_typ == '%'))
 		obj->zero = 0;
@@ -53,4 +54,15 @@ void	pop_parse(conv_obj *obj, char **sentinel)
 		obj->zero = 1;
 	(*sentinel)++;
 	free(hack);
+}
+
+int		star_check(conv_obj *obj, char **sentinel)
+{
+	if (**sentinel == '*')
+	{
+		obj->p_star = 1;
+		(*sentinel)++;
+		return (1);
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 19:32:52 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:23:49 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void		pop_con(conv_obj *obj, char **sentinel);
 void		non_func(conv_obj *obj, va_list args);
 void		pop_parse(conv_obj *obj, char **sentinel);
 int			ft_strc(char *str, char c);
+int			star_check(conv_obj *obj, char **sentinel);
+
 
 /*
 **			funx__help
@@ -102,7 +104,7 @@ char		*s_wide(wchar_t wide);
 /*
 **			funx_d
 */
-void		D_func(conv_obj *obj, va_list args);
+void		big_d_func(conv_obj *obj, va_list args);
 void		d_func(conv_obj *obj, va_list args);
 void		d_width(conv_obj *obj);
 void		d_precision(conv_obj *obj);
@@ -112,15 +114,15 @@ void		d_width_zero(conv_obj *obj);
 **			funx_s
 */
 void		s_func(conv_obj *obj, va_list args);
-void		S_func(conv_obj *obj, va_list args);
+void		big_s_func(conv_obj *obj, va_list args);
 void		c_func(conv_obj *obj, va_list args);
-void		C_func(conv_obj *obj, va_list args);
+void		big_c_func(conv_obj *obj, va_list args);
 
 /*
 **			funx_o
 */
 void		o_func(conv_obj *obj, va_list args);
-void		O_func(conv_obj *obj, va_list args);
+void		big_o_func(conv_obj *obj, va_list args);
 void		casting(conv_obj *obj, va_list args, int n);
 
 
@@ -129,13 +131,13 @@ void		casting(conv_obj *obj, va_list args, int n);
 **			funx_u
 */
 void		u_func(conv_obj *obj, va_list args);
-void		U_func(conv_obj *obj, va_list args);
+void		big_u_func(conv_obj *obj, va_list args);
 
 /*
 **			funx_x
 */
 void		x_func(conv_obj *obj, va_list args);
-void		X_func(conv_obj *obj, va_list args);
+void		big_x_func(conv_obj *obj, va_list args);
 void		x_hash(conv_obj *obj);
 void		x_hash_alt(conv_obj *obj);
 

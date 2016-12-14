@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 09:55:55 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 13:50:57 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:07:13 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ char *g_flag_length = "hljz";
 
 f_list g_func_arr[] = {
 	{'s', &s_func},
-	{'S', &S_func},
+	{'S', &big_s_func},
 	{'p', &p_func},
 	{'d', &d_func},
-	{'D', &D_func},
+	{'D', &big_d_func},
 	{'i', &i_func},
 	{'o', &o_func},
-	{'O', &O_func},
+	{'O', &big_o_func},
 	{'u', &u_func},
-	{'U', &U_func},
+	{'U', &big_u_func},
 	{'x', &x_func},
-	{'X', &X_func},
+	{'X', &big_x_func},
 	{'c', &c_func},
-	{'C', &C_func},
+	{'C', &big_c_func},
 	{'%', &non_func}
 };

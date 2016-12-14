@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 12:32:18 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 19:48:12 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:14:33 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	x_func(conv_obj *obj, va_list args)
 {
-	// printf("obj->str = %s\n", obj->str);
 	o_func(obj, args);
 }
 
-void	X_func(conv_obj *obj, va_list args)
+void	big_x_func(conv_obj *obj, va_list args)
 {
 	int		i;
 
@@ -38,12 +37,12 @@ void	x_hash(conv_obj *obj)
 
 	if (!obj->str[0] || !ft_strcmp(obj->str, "0"))
 		return ;
-	if (!obj->hash || !((obj->con_typ == 'x') || (obj->con_typ == 'X')) 
-		|| obj->zero == 1 )
+	if (!obj->hash || !((obj->con_typ == 'x') || (obj->con_typ == 'X'))
+		|| obj->zero == 1)
 		return ;
 	new = (char *)ft_memalloc(ft_strlen(obj->str) + 3);
 	new[0] = '0';
-	new[1] = obj->con_typ;	
+	new[1] = obj->con_typ;
 	ft_strcpy(new + 2, obj->str);
 	free(obj->str);
 	obj->str = new;
@@ -56,7 +55,7 @@ void	x_hash_alt(conv_obj *obj)
 
 	if (!obj->str[0] || !ft_strcmp(obj->str, "0"))
 		return ;
-	if (!obj->hash || !((obj->con_typ == 'x') || (obj->con_typ == 'X')) 
+	if (!obj->hash || !((obj->con_typ == 'x') || (obj->con_typ == 'X'))
 		|| obj->zero == 0 || obj->minus == 1)
 		return ;
 	i = 0;
@@ -70,8 +69,8 @@ void	x_hash_alt(conv_obj *obj)
 		ft_strcpy(new + 2, obj->str);
 		free(obj->str);
 		obj->str = new;
-	}	
-	else 
+	}
+	else
 	{
 		obj->str[0] = '0';
 		obj->str[1] = obj->con_typ;

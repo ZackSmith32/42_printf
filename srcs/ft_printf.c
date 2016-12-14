@@ -6,12 +6,11 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:19:10 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:46:14 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
 
 int		pop_obj(conv_obj *obj, char **sentinel)
 {
@@ -46,7 +45,7 @@ int		mission_control(char **sentinel, va_list args)
 	while (sentinel[0][0] != '\0')
 	{
 		if (i)
-			temp  = new_conv_obj();
+			temp = new_conv_obj();
 		pop_obj(temp, sentinel);
 		if (temp->f)
 			(temp->f)(temp, args);

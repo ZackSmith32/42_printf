@@ -6,12 +6,11 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 12:59:38 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 11:22:03 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:49:02 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
 
 void	plus_func(conv_obj *obj)
 {
@@ -61,10 +60,10 @@ void	star_args(conv_obj *obj, va_list args)
 		obj->prec = va_arg(args, int);
 }
 
-int			ft_strc(char *str, char c)
+int		ft_strc(char *str, char c)
 {
 	int		i;
-	
+
 	if (str == 0)
 		return (0);
 	i = 0;

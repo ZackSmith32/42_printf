@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:56:21 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/08 20:01:10 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 17:12:46 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ void	u_func(conv_obj *obj, va_list args)
 	return ;
 }
 
-void	U_func(conv_obj *obj, va_list args)
+void	big_u_func(conv_obj *obj, va_list args)
 {
 	ft_strcpy(obj->len_f, "l");
 	u_func(obj, args);
 	return ;
 }
-

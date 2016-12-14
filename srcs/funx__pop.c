@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 14:25:02 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 14:27:51 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,6 @@ void	pop_width(conv_obj *obj, char **sentinel)
 	obj->width = i;
 }
 
-int		star_check(conv_obj *obj, char **sentinel)
-{	
-	if (**sentinel == '*')
-	{
-		obj->p_star = 1;
-		(*sentinel)++;
-		return (1);
-	}
-	return (0);
-}
-
 void	pop_precision(conv_obj *obj, char **sentinel)
 {
 	int		i;
@@ -147,21 +136,3 @@ void	pop_length(conv_obj *obj, char **sentinel)
 	if (ft_strc(g_flag_length, **sentinel))
 		(*sentinel)++;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

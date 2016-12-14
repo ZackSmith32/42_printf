@@ -6,13 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/08 10:44:12 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/11 15:50:44 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/13 16:58:04 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char	*s_wide_1(int wc)
+static char		*s_wide_1(int wc)
 {
 	char		*ret;
 
@@ -22,9 +22,9 @@ static char	*s_wide_1(int wc)
 	return (ret);
 }
 
-static char	*s_wide_2(int wc)
+static char		*s_wide_2(int wc)
 {
-	char 		*ret;
+	char		*ret;
 
 	ret = (char *)ft_memalloc(3);
 	ret[1] = (wc & 0x3f) | 0x80;
@@ -33,7 +33,7 @@ static char	*s_wide_2(int wc)
 	return (ret);
 }
 
-static char 	*s_wide_3(int wc)
+static char		*s_wide_3(int wc)
 {
 	char		*ret;
 
@@ -45,7 +45,7 @@ static char 	*s_wide_3(int wc)
 	return (ret);
 }
 
-static char	*s_wide_4(int wc)
+static char		*s_wide_4(int wc)
 {
 	char		*ret;
 
@@ -58,7 +58,7 @@ static char	*s_wide_4(int wc)
 	return (ret);
 }
 
-char	*s_wide(wchar_t wide)
+char			*s_wide(wchar_t wide)
 {
 	char		*ret;
 
