@@ -11,5 +11,5 @@ Project completed at [42School Fremont](https://www.42.us.org/)
 * Testing the code
  * In the srcs directory there is an empty main file where you can write a test
 
-  For example: `ft_printf("My name is %s\n", Zack);`
+   For example: `ft_printf("My name is %s\n", Zack);`
  * While in the root directory you can compile the library with the test using the comp.sh script `sh comp.sh`
