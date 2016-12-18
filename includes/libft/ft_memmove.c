@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/24 13:19:02 by zsmith            #+#    #+#             */
+/*   Updated: 2016/10/02 14:18:10 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	char		*d;
+	const char	*s;
 
-	return (0);
+	d = dest;
+	s = src;
+	if (s > d)
+		ft_memcpy(d, s, len);
+	else if (s < d)
+	{
+		while (len > 0)
+		{
+			d[len - 1] = s[len - 1];
+			len--;
+		}
+	}
+	return (dest);
 }
-

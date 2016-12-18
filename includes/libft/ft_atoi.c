@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/25 20:37:24 by zsmith            #+#    #+#             */
+/*   Updated: 2016/10/03 18:11:54 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+int		ft_atoi(const char *str)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	int		ans;
+	int		neg;
+	int		i;
 
-	return (0);
+	i = 0;
+	neg = 1;
+	ans = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+	{
+		neg = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (48 <= str[i] && str[i] < 58)
+	{
+		ans = str[i] - 48 + ans * 10;
+		i++;
+	}
+	return (neg * ans);
 }
-

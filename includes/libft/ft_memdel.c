@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/29 14:47:44 by zsmith            #+#    #+#             */
+/*   Updated: 2016/10/03 19:40:26 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+/*
+** the address that used to point to *ap should now point to NULL
+** free the pointer whose address is provided (*ap)
+*/
 
-int		main(void)
+#include "libft.h"
+
+void	ft_memdel(void **ap)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
-
-	return (0);
+	if (!ap)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }
-

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/25 17:32:06 by zsmith            #+#    #+#             */
+/*   Updated: 2016/09/27 00:24:34 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+char	*ft_strchr(const char *s, int c)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	size_t	i;
+	size_t	j;
 
-	return (0);
+	i = 0;
+	j = 0;
+	while (s[i])
+		i++;
+	while (j <= i)
+	{
+		if (*s == (char)c)
+			return ((char*)s);
+		s++;
+		j++;
+	}
+	return (NULL);
 }
-

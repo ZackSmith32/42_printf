@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/25 20:31:34 by zsmith            #+#    #+#             */
+/*   Updated: 2016/09/27 19:03:49 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	size_t	i;
 
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		else if (s1[i] == '\0' && s2[i] == '\0')
+			return (0);
+		i++;
+	}
 	return (0);
 }
-

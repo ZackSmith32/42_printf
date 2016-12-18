@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/23 16:21:49 by zsmith            #+#    #+#             */
+/*   Updated: 2016/09/24 22:28:02 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	size_t			i;
+	unsigned char	*strt;
+	unsigned char	*end;
 
-	return (0);
+	strt = (unsigned char*)src;
+	end = (unsigned char*)dest;
+	i = 0;
+	while (i < n)
+	{
+		*end = *strt;
+		i++;
+		end++;
+		strt++;
+	}
+	return (dest);
 }
-

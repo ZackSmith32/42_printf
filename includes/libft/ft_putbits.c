@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_putbits.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/12/01 14:09:07 by zsmith            #+#    #+#             */
+/*   Updated: 2016/12/17 19:29:40 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+void	ft_putbits(int n, int bytes)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	int		i;
+	int		j;
+	char	*str;
 
-	return (0);
+	i = 1;
+	bytes = 8 * bytes - 1;
+	str = (char *)malloc(sizeof(char) * bytes + 1);
+	while (bytes > 0)
+	{
+		i = i * 2;
+		bytes--;
+	}
+	j = 0;
+	while (i > 0)
+	{
+		str[j] = ft_itoa(n / i)[0];
+		if (n / i != 0)
+			n = n - i;
+		i = i / 2;
+		j++;
+	}
+	str[j] = '\0';
+	ft_putstr(str);
 }
-

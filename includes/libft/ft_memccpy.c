@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/23 17:14:11 by zsmith            #+#    #+#             */
+/*   Updated: 2016/09/24 22:40:12 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+void	*ft_memccpy(void *dst, const void *src,
+		int c, size_t n)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	size_t			i;
+	unsigned char	*strt;
+	unsigned char	*end;
+	void			*nptr;
 
-	return (0);
+	nptr = NULL;
+	strt = (unsigned char*)src;
+	end = (unsigned char*)dst;
+	i = 0;
+	while (i < n)
+	{
+		*end = *strt;
+		if (*strt == (unsigned char)(c))
+		{
+			return (++end);
+		}
+		end++;
+		strt++;
+		i++;
+	}
+	return (nptr);
 }
-

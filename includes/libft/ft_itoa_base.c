@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/12/13 22:06:37 by zsmith            #+#    #+#             */
+/*   Updated: 2016/12/13 22:50:58 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+char	*ft_itoa_base(unsigned long long n, int base)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	int		i;
+	char	lst[17];
+	char	*str;
 
-	return (0);
+	ft_strcpy(lst, "0123456789abcdef");
+	i = ft_numlen_base(n, base);
+	str = (char *)ft_memalloc(sizeof(char) * i + 1);
+	if (str == NULL)
+		return (NULL);
+	if (n == 0)
+	{
+		str[0] = '0';
+		return (str);
+	}
+	while (n != 0)
+	{
+		str[--i] = lst[n % base];
+		n = n / base;
+	}
+	return (str);
 }
-

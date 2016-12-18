@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_puttlist.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/10/02 13:51:53 by zsmith            #+#    #+#             */
+/*   Updated: 2016/10/05 15:47:11 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+void	ft_puttlist(t_list *t)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	int		i;
 
-	return (0);
+	if (!t)
+		ft_putstr("*t = NULL\n");
+	i = 0;
+	while (t)
+	{
+		ft_putstr("[");
+		ft_putstr(t->content);
+		ft_putstr("]");
+		t = t->next;
+		if (t)
+			ft_putstr(" => ");
+		i++;
+	}
+	ft_putstr("\n");
 }
-

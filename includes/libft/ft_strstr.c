@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_main.c                                   :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 20:28:13 by zsmith           ###   ########.fr       */
+/*   Created: 2016/09/25 18:10:42 by zsmith            #+#    #+#             */
+/*   Updated: 2016/09/27 16:07:27 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <limits.h>
-#include <locale.h>
-#include <stdint.h> 
+#include "libft.h"
 
-int		main(void)
+char	*ft_strstr(const char *big, const char *little)
 {
-	setlocale(LC_ALL, "");
-	
-	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
-	
-	printf("\nret = %d\n", printf("%4.15d", -424242));
- 
+	int		j;
+	char	*lit;
+	char	*bg;
 
-	return (0);
+	bg = (char*)big;
+	lit = (char*)little;
+	if (!(*lit))
+		return ((char *)bg);
+	while (*bg != '\0')
+	{
+		j = 0;
+		while (lit[j] == bg[j])
+		{
+			if (lit[j + 1] == '\0')
+			{
+				return ((char *)(bg));
+			}
+			j++;
+		}
+		bg++;
+	}
+	return (NULL);
 }
-

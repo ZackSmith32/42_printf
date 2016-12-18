@@ -6,7 +6,7 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/22 16:32:25 by zsmith            #+#    #+#              #
-#    Updated: 2016/12/14 18:26:39 by zsmith           ###   ########.fr        #
+#    Updated: 2016/12/17 20:26:12 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ OFILES	=	$(CFILES:.c=.o)
 all: $(NAME)
 
 $(NAME): comp_printf
-	@ libtool -static -o $@ libfunc.a ./includes/libft.a
+	@ make re -C ./includes/libft 
+	@ libtool -static -o $@ libfunc.a ./includes/libft/libft.a
 
 comp_printf:
 	@ gcc $(FLAGS) $(addprefix $(SRCDIR),$(CFILES))
