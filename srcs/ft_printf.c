@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 14:26:23 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/13 23:54:18 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 14:36:29 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		pop_obj(t_conv_obj *obj, char **sentinel)
 {
 	if (**sentinel == '%')
 	{
+		pop_color(obj, sentinel);
 		pop_flags(obj, sentinel);
 		pop_width(obj, sentinel);
 		pop_precision(obj, sentinel);

@@ -6,7 +6,7 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/22 16:32:25 by zsmith            #+#    #+#              #
-#    Updated: 2016/12/14 00:17:00 by zsmith           ###   ########.fr        #
+#    Updated: 2016/12/14 18:26:39 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,5 @@ clean:
 
 fclean: clean
 	@ /bin/rm -f $(NAME)
-	@ /bin/rm -f libfunc.a
 
 re: fclean all

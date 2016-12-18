@@ -6,13 +6,14 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/14 12:14:34 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 18:06:15 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
@@ -30,6 +31,7 @@ typedef struct		s_a_list
 	int				width;
 	int				w_star;
 	int				prec;
+	char*			color;
 	int				p_star;
 	char			con_typ;
 	int				extra;
@@ -91,6 +93,7 @@ void				pop_length(t_conv_obj *obj, char **sentinel);
 void				pop_con(t_conv_obj *obj, char **sentinel);
 void				pop_parse(t_conv_obj *obj, char **sentinel);
 int					star_check(t_conv_obj *obj, char **sentinel);
+void				pop_color(t_conv_obj *obj, char **sentinel);
 
 /*
 **		funx__wide

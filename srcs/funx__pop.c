@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 16:12:29 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/14 00:11:10 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 18:50:41 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ void			pop_str(t_conv_obj *obj, char **str)
 
 void			pop_flags(t_conv_obj *obj, char **sentinel)
 {
-	if (**sentinel == '%')
-		(*sentinel)++;
-	else
-		return ;
 	while (ft_strc(g_flag_norm, **sentinel) != 0)
 	{
 		if (**sentinel == '-')
