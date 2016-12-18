@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 19:09:46 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 18:59:21 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 20:15:05 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int		main(void)
 {
 	setlocale(LC_ALL, "");
 	
-	ft_printf("%b", 42424);
-	// printf("\n%4.15d", 424242);
+	printf("\nme ret = %d\n", ft_printf("%4.15d", -424242));
+	
+	printf("\nret = %d\n", printf("%4.15d", -424242));
  
 
 	return (0);

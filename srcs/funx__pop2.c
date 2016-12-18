@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 21:00:51 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 18:58:22 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 19:32:36 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int		star_check(t_conv_obj *obj, char **sentinel)
 
 void	pop_color(t_conv_obj *obj, char **sentinel)
 {
-	printf("pop_color: sent = %s\n", *sentinel);
 	char	*color;
 	int		i;
 
@@ -109,53 +108,9 @@ void	pop_color(t_conv_obj *obj, char **sentinel)
 	i = 0;
 	while ((*sentinel)[i] != '@')
 		i++;
-	printf("check i = %d\n", i);
 	color = (char *)ft_memalloc(sizeof(char) * (i + 1));
 	ft_strncpy(color, (*sentinel), i);
 	color[i + 1] = '\0';
 	(*sentinel) += (i + 1);
 	obj->color = ft_strdup(color);
-	printf("pop_color: obj->color = %s\n", obj->color);
-	printf("pop_color: out: sent = %s\n", (*sentinel));
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

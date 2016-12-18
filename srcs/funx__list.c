@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/13 15:32:09 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 18:01:39 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 19:32:01 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	print_null(int j)
 {
 	ft_putchar('\0');
 	j++;
-	return(j);
+	return (j);
 }
 
 int			ft_putobj(t_conv_obj *t)

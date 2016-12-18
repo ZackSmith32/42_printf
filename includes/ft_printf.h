@@ -6,14 +6,13 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 10:28:52 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 18:06:15 by zsmith           ###   ########.fr       */
+/*   Updated: 2016/12/17 19:49:51 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
@@ -31,7 +30,7 @@ typedef struct		s_a_list
 	int				width;
 	int				w_star;
 	int				prec;
-	char*			color;
+	char			*color;
 	int				p_star;
 	char			con_typ;
 	int				extra;
@@ -46,8 +45,8 @@ typedef struct		s_z_list
 	void			(*f)(struct s_a_list *obj, va_list args);
 }					t_f_list;
 
-extern t_f_list		g_func_arr[16];
-extern char *g_flag_norm;
+extern t_f_list g_func_arr[16];
+extern char	*g_flag_norm;
 extern char *g_flag_length;
 
 /*
