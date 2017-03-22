@@ -1,1 +1,0 @@
-gcc ft_printf_main.c test_mallocwrap.c -I includes/ft_printf.h includes/libft/libft.h -L. -lftprintf 
