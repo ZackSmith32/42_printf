@@ -6,7 +6,7 @@
 /*   By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:35:03 by zsmith            #+#    #+#             */
-/*   Updated: 2016/12/17 19:27:31 by zsmith           ###   ########.fr       */
+/*   Updated: 2017/02/21 20:59:37 by zsmith           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_color_on(int argc, ...)
 		{
 			if (ft_strcmp(param, g_color_dict[j].c) == 0)
 			{
-				if (j == 0)
+				if (j == 0 || j >= 9)
 					write(0, g_color_dict[j].code, 5);
 				else
 					write(0, g_color_dict[j].code, 6);
